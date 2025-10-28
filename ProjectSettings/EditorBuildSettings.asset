@@ -8,6 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HomeMenu.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Mix-A-Fix.unity
+    guid: 128acff69512ce74d9ce07fa21adad16
+  - enabled: 1
+    path: Assets/Scenes/RefillRush.unity
+    guid: 192934cb9b2519e458a89868eefc4430
+  - enabled: 1
+    path: Assets/Scenes/PillFill.unity
+    guid: 4904473e8ff1fbd43a7b2fae9fc3455c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
