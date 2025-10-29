@@ -18,7 +18,7 @@ public class MenuManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -31,12 +31,15 @@ public class MenuManager : MonoBehaviour
     public void ShowPanel(GameObject panelToShow)
     {
        foreach (GameObject panel in allPanels)
-        {
+       {
             panel.SetActive(false);
-        }
+       }
 
        if (panelToShow != null)
+       {
+            panelToShow.SetActive(true);
             panelHistory.Push(panelToShow);
+       }    
     }
 
     public void CLoseCurrentPanel()
