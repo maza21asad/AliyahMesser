@@ -25,6 +25,7 @@ public class PillDragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         placed = false; // reset when starting a new drag
         canvasGroup.blocksRaycasts = false; // allow drop areas to receive the drop
         // optionally bring to front:
+        //canvasGroup.alpha = 1f;
         transform.SetAsLastSibling();
     }
 
