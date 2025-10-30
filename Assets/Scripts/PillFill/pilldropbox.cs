@@ -3,39 +3,50 @@ using UnityEngine.EventSystems;
 
 public class PillBoxDropArea : MonoBehaviour, IDropHandler
 {
-    public static bool isPillAccepted = false;
-    public int totalPillsNeeded = 4;
-    private int pillsCollected = 0;
+    [Header("What this box accepts (match itemCategory string exactly)")]
+    public string acceptedCategory = "Pill";
 
+    [Header("Collection")]
+    public int requiredCount = 4;
+    private int collectedCount = 0;
+
+    // NOTE: here we use instance logic (no static flags)
     public void OnDrop(PointerEventData eventData)
     {
-        PillDragItem droppedItem = eventData.pointerDrag.GetComponent<PillDragItem>();
+        // pointerDrag is the GameObject being dragged
+        if (eventData.pointerDrag == null) return;
 
-        if (droppedItem != null)
+        PillDragItem dropped = eventData.pointerDrag.GetComponent<PillDragItem>();
+        if (dropped == null) return;
+
+        // check for exact match (case-sensitive). If you want case-insensitive:
+        // if (string.Equals(dropped.itemCategory, acceptedCategory, StringComparison.OrdinalIgnoreCase))
+        if (dropped.itemCategory == acceptedCategory)
         {
-            if (droppedItem.itemCategory == "Pill")
-            {
-                droppedItem.GetComponent<RectTransform>().position = transform.position;
-                isPillAccepted = true;
+            // Accept it: snap to box and mark as placed
+            dropped.GetComponent<RectTransform>().position = transform.position;
+            dropped.placed = true;
 
-                pillsCollected++;
-                Debug.Log($"✅ Pill collected: {pillsCollected}/{totalPillsNeeded}");
+            collectedCount++;
+            Debug.Log($"✅ Collected {collectedCount}/{requiredCount} {acceptedCategory}(s).");
 
-                if (pillsCollected >= totalPillsNeeded)
-                {
-                    OnAllPillsCollected();
-                }
-            }
-            else
+            if (collectedCount >= requiredCount)
             {
-                isPillAccepted = false;
-                Debug.Log("❌ That’s not a pill!");
+                OnAllCollected();
             }
+        }
+        else
+        {
+            // Not accepted: leave placed=false so item returns on OnEndDrag
+            dropped.placed = false;
+            Debug.Log($"❌ Wrong item. This box accepts: {acceptedCategory}. Dropped was: {dropped.itemCategory}");
         }
     }
 
-    private void OnAllPillsCollected()
+    private void OnAllCollected()
     {
-        Debug.Log("🎉 All pills collected for Bunny!");
+        Debug.Log("🎉 Required pills collected! Win condition reached.");
+        // Add your win logic here (score, next level, etc.)
     }
 }
+

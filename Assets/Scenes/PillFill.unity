@@ -282,9 +282,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1b188e9433fb0b4d81700ed6b28431b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalPillsNeeded: 4
-  pillCounterText: {fileID: 0}
-  successMessagePanel: {fileID: 0}
+  acceptedCategory: '"pill"'
+  requiredCount: 4
 --- !u!1 &177343406
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,6 +877,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemCategory: '"med"'
+  startPosition: {x: 0, y: 0, z: 0}
+  placed: 0
 --- !u!225 &1133347895
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1021,6 +1022,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemCategory: '"pill"'
+  startPosition: {x: 0, y: 0, z: 0}
+  placed: 0
 --- !u!225 &1229981369
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1486,6 +1489,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemCategory: '"pill"'
+  startPosition: {x: 0, y: 0, z: 0}
+  placed: 0
 --- !u!225 &1716762557
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1588,6 +1593,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemCategory: '"pill"'
+  startPosition: {x: 0, y: 0, z: 0}
+  placed: 0
 --- !u!225 &1764288822
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1690,6 +1697,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemCategory: '"pill"'
+  startPosition: {x: 0, y: 0, z: 0}
+  placed: 0
 --- !u!225 &1803941496
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1792,6 +1801,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemCategory: '"bandage"'
+  startPosition: {x: 0, y: 0, z: 0}
+  placed: 0
 --- !u!225 &1882177164
 CanvasGroup:
   m_ObjectHideFlags: 0
