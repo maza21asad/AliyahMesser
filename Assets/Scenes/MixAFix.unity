@@ -389,6 +389,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 132122065}
   m_CullTransparentMesh: 1
+--- !u!1 &202862586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 202862587}
+  - component: {fileID: 202862588}
+  m_Layer: 5
+  m_Name: DropperManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &202862587
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202862586}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1471959006}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &202862588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202862586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60c5e9bf2c04d00449ff2b48fa2834ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bottle: {fileID: 1159860825}
+  bowl: {fileID: 68765906}
+  dropCount: 0
 --- !u!1 &209113258
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,6 +571,7 @@ GameObject:
   - component: {fileID: 282703126}
   - component: {fileID: 282703128}
   - component: {fileID: 282703127}
+  - component: {fileID: 282703129}
   m_Layer: 5
   m_Name: Dropper
   m_TagString: Untagged
@@ -584,6 +636,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 282703125}
   m_CullTransparentMesh: 1
+--- !u!114 &282703129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282703125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b57b8597bf8bb294380e69a8877b213d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 202862588}
 --- !u!1 &309482723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1849,6 +1914,7 @@ RectTransform:
   m_Children:
   - {fileID: 972033910}
   - {fileID: 1601643239}
+  - {fileID: 202862587}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1867,7 +1933,7 @@ GameObject:
   - component: {fileID: 1601643239}
   - component: {fileID: 1601643240}
   m_Layer: 5
-  m_Name: GameManager
+  m_Name: MixAFixManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1904,10 +1970,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12115992a27f612438bdf0067bdfb31e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powderArea: {fileID: 808665976}
-  bowlArea: {fileID: 68765906}
-  scoopCount: 0
-  totalScoopsNeeded: 2
+  powder: {fileID: 808665976}
+  pinkCream: {fileID: 309482724}
+  yellowCream: {fileID: 2002721882}
+  bowl: {fileID: 68765906}
+  powderScoopCount: 0
+  pinkCreamScoopCount: 0
+  yellowCreamScoopCount: 0
 --- !u!1 &1835126700
 GameObject:
   m_ObjectHideFlags: 0

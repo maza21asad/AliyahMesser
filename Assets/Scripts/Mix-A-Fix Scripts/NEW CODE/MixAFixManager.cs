@@ -2,36 +2,65 @@
 
 public class MixAFixManager : MonoBehaviour
 {
-    public RectTransform powderArea;
-    public RectTransform bowlArea;
+    public RectTransform powder;
+    public RectTransform pinkCream;
+    public RectTransform yellowCream;
+    public RectTransform bowl;
 
-    [Header("Scoop Tracking")]
-    public int scoopCount = 0;
-    public int totalScoopsNeeded = 2;
+    public int powderScoopCount = 0;
+    public int pinkCreamScoopCount = 0;
+    public int yellowCreamScoopCount = 0;
 
+    private RectTransform lastTarget;
+
+    // Check if spoon is over powder or cream or bowl
     public bool IsOverPowder(RectTransform spoon)
     {
-        return RectTransformUtility.RectangleContainsScreenPoint(powderArea, spoon.position);
+        lastTarget = powder;
+        return RectTransformUtility.RectangleContainsScreenPoint(powder, spoon.position);
+    }
+
+    public bool IsOverPinkCream(RectTransform spoon)
+    {
+        lastTarget = pinkCream;
+        return RectTransformUtility.RectangleContainsScreenPoint(pinkCream, spoon.position);
+    }
+
+    public bool IsOverYellowCream(RectTransform spoon)
+    {
+        lastTarget = yellowCream;
+        return RectTransformUtility.RectangleContainsScreenPoint(yellowCream, spoon.position);
     }
 
     public bool IsOverBowl(RectTransform spoon)
     {
-        return RectTransformUtility.RectangleContainsScreenPoint(bowlArea, spoon.position);
+        return RectTransformUtility.RectangleContainsScreenPoint(bowl, spoon.position);
     }
 
-    public void OnPowderCollected()
+    // Called when any scoop is collected
+    public void OnScoopCollected(string type)
     {
-        Debug.Log("💧 Powder collected — ready to drop!");
+        Debug.Log($"🧂 {type} scoop collected and ready to drop!");
     }
 
-    public void DropScoop()
+    // Called when a scoop is dropped
+    public void DropScoop(string type)
     {
-        scoopCount++;
-        Debug.Log($"✅ Scoop dropped! Current scoops: {scoopCount}/{totalScoopsNeeded}");
-
-        if (scoopCount >= totalScoopsNeeded)
+        switch (type)
         {
-            Debug.Log("🎉 All scoops completed!");
+            case "Powder":
+                powderScoopCount++;
+                Debug.Log($"✅ Powder dropped! Total powder scoops: {powderScoopCount}");
+                break;
+            case "PinkCream":
+                pinkCreamScoopCount++;
+                Debug.Log($"✅ Pink Cream dropped! Total pink cream scoops: {pinkCreamScoopCount}");
+                break;
+            case "YellowCream":
+                yellowCreamScoopCount++;
+                Debug.Log($"✅ Yellow Cream dropped! Total yellow cream scoops: {yellowCreamScoopCount}");
+                break;
         }
     }
 }
+

@@ -10,8 +10,9 @@ public class SpoonController : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private Transform originalParent;
     private int originalSiblingIndex;
 
-    private bool isHoldingPowder = false;
-    private bool isHoveringOverPowder = false;
+    private bool isHoldingScoop = false;
+    private string heldType = "";
+    private bool isHovering = false;
     private float hoverTimer = 0f;
 
     private void Awake()
@@ -22,15 +23,13 @@ public class SpoonController : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        // Remember where the spoon was before dragging
         originalParent = transform.parent;
         originalSiblingIndex = transform.GetSiblingIndex();
 
-        // Move spoon to the top of the canvas so it renders above everything
         transform.SetParent(canvas.transform, true);
         transform.SetAsLastSibling();
 
-        isHoveringOverPowder = false;
+        isHovering = false;
         hoverTimer = 0f;
     }
 
@@ -41,50 +40,65 @@ public class SpoonController : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        // Move it back to its original parent so hierarchy stays clean
         transform.SetParent(originalParent, true);
         transform.SetSiblingIndex(originalSiblingIndex);
 
         if (manager == null) return;
 
-        // Check drop locations
+        // Check if released on any ingredient
         if (manager.IsOverPowder(rectTransform))
         {
-            Debug.Log("🧂 Spoon released on powder...");
-            isHoveringOverPowder = true;
-            hoverTimer = 0f;
+            Debug.Log("🧂 Released on Powder");
+            StartHover("Powder");
+        }
+        else if (manager.IsOverPinkCream(rectTransform))
+        {
+            Debug.Log("🍓 Released on Pink Cream");
+            StartHover("PinkCream");
+        }
+        else if (manager.IsOverYellowCream(rectTransform))
+        {
+            Debug.Log("💛 Released on Yellow Cream");
+            StartHover("YellowCream");
         }
         else if (manager.IsOverBowl(rectTransform))
         {
-            if (isHoldingPowder)
+            if (isHoldingScoop)
             {
-                Debug.Log("🥣 Scoop dropped into bowl!");
-                manager.DropScoop();
-                isHoldingPowder = false;
+                Debug.Log($"🥣 Dropped {heldType} into bowl!");
+                manager.DropScoop(heldType);
+                isHoldingScoop = false;
+                heldType = "";
             }
             else
             {
-                Debug.Log("⚠️ Spoon is empty! Nothing to drop.");
+                Debug.Log("⚠️ Spoon empty, nothing to drop!");
             }
         }
         else
         {
-            Debug.Log("🪄 Spoon released outside powder/bowl — staying in place.");
+            Debug.Log("🪄 Released elsewhere — spoon stays put.");
         }
+    }
+
+    private void StartHover(string type)
+    {
+        isHovering = true;
+        hoverTimer = 0f;
+        heldType = type;
     }
 
     private void Update()
     {
-        // Handle powder pickup delay
-        if (isHoveringOverPowder)
+        if (isHovering)
         {
             hoverTimer += Time.deltaTime;
             if (hoverTimer >= 1.5f)
             {
-                isHoveringOverPowder = false;
-                isHoldingPowder = true;
-                manager.OnPowderCollected();
-                Debug.Log("✅ Scoop taken!");
+                isHovering = false;
+                isHoldingScoop = true;
+                manager.OnScoopCollected(heldType);
+                Debug.Log($"✅ {heldType} scoop taken!");
             }
         }
     }
