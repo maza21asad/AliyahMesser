@@ -2250,6 +2250,10 @@ MonoBehaviour:
   powderScoopCount: 0
   pinkCreamScoopCount: 0
   yellowCreamScoopCount: 0
+  powderStepTick: {fileID: 1717557268}
+  yellowCreamStepTick: {fileID: 1117280637}
+  requiredPowderScoops: 2
+  requiredYellowCreamScoops: 2
 --- !u!1 &1717557266
 GameObject:
   m_ObjectHideFlags: 0
