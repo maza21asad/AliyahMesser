@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/HomeMenu.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/Mix-A-Fix.unity
-    guid: 128acff69512ce74d9ce07fa21adad16
+    path: Assets/Scenes/MixAFix.unity
+    guid: 2694ed79ab490bd49a69670315582a9f
   - enabled: 1
     path: Assets/Scenes/RefillRush.unity
     guid: 192934cb9b2519e458a89868eefc4430
