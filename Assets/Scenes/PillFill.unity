@@ -761,8 +761,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 759482910}
+  m_Children: []
   m_Father: {fileID: 2122748178}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -820,7 +819,7 @@ GameObject:
   - component: {fileID: 759482912}
   - component: {fileID: 759482911}
   m_Layer: 5
-  m_Name: txt
+  m_Name: Infotxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -838,12 +837,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 630944055}
+  m_Father: {fileID: 2122748178}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 39.57007, y: 341}
-  m_SizeDelta: {x: 401.94, y: 598.6}
+  m_AnchoredPosition: {x: 755.56995, y: 213.69496}
+  m_SizeDelta: {x: 401.94, y: 284.46}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &759482911
 MonoBehaviour:
@@ -1979,6 +1978,7 @@ RectTransform:
   - {fileID: 630944055}
   - {fileID: 1551136252}
   - {fileID: 159138850}
+  - {fileID: 759482910}
   m_Father: {fileID: 556288453}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
