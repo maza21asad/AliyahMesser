@@ -31,7 +31,13 @@ public class PillDragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.position = Input.mousePosition;
+        //rectTransform.position = Input.mousePosition;
+
+        Vector2 localPos;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform.parent as RectTransform, eventData.position,
+            eventData.pressEventCamera, out localPos);
+
+        rectTransform.localPosition = localPos;
     }
 
     public void OnEndDrag(PointerEventData eventData)
