@@ -297,8 +297,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b38d3536723c654f96eef749bd5c998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedCategory: '"pill"'
-  requiredCount: 4
 --- !u!1 &177343406
 GameObject:
   m_ObjectHideFlags: 0
