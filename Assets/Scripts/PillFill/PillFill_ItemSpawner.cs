@@ -19,14 +19,20 @@ public class PillFill_ItemSpawner : MonoBehaviour
         // Spawn pills (draggable)
         for (int i = 0; i < data.pillCount; i++)
         {
-            GameObject pill = Instantiate(data.pillPrefab, spawnParent);
+            GameObject prefab = data.pillPrefabs[Random.Range(0, data.pillPrefabs.Length)];
+            GameObject pill = Instantiate(prefab, spawnParent);
             pill.GetComponent<PillFill_DragItem>().itemCategory = "Pill";
+            //GameObject pill = Instantiate(data.pillPrefab, spawnParent);
+            //pill.GetComponent<PillFill_DragItem>().itemCategory = "Pill";
+
         }
 
         // Spawn obstacles (NOT draggable)
         for (int i = 0; i < data.obstacleCount; i++)
         {
-            Instantiate(data.obstaclePrefab, obstacleParent);
+            GameObject prefab = data.obstaclePrefabs[Random.Range(0, data.obstaclePrefabs.Length)];
+            Instantiate(prefab, obstacleParent);
+            //Instantiate(data.obstaclePrefab, obstacleParent);
         }
     }
 

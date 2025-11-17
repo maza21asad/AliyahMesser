@@ -38,6 +38,10 @@ using UnityEngine.EventSystems;
 
 public class PillFill_DropArea : MonoBehaviour, IDropHandler
 {
+    //public string acceptedCategory = "Pill";
+    //public int requiredCount = 4;
+    //private int collectedCount = 0;
+
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag == null) return;
