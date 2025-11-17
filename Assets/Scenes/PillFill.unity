@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 89642706}
   - component: {fileID: 89642705}
   - component: {fileID: 89642707}
+  - component: {fileID: 89642708}
   m_Layer: 5
   m_Name: box
   m_TagString: Untagged
@@ -277,9 +278,23 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 89642703}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1b188e9433fb0b4d81700ed6b28431b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  acceptedCategory: '"pill"'
+  requiredCount: 4
+--- !u!114 &89642708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89642703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b38d3536723c654f96eef749bd5c998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   acceptedCategory: '"pill"'
@@ -735,6 +750,7 @@ GameObject:
   - component: {fileID: 1133347892}
   - component: {fileID: 1133347894}
   - component: {fileID: 1133347895}
+  - component: {fileID: 1133347896}
   m_Layer: 5
   m_Name: med
   m_TagString: Untagged
@@ -806,7 +822,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1133347890}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d964b31c526eec43b2ba1fe32904b20, type: 3}
   m_Name: 
@@ -826,6 +842,21 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1133347896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133347890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e0cb5ac34a49b48bb20ed01ee48881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemCategory: '"med"'
+  startPosition: {x: 0, y: 0, z: 0}
+  placed: 0
 --- !u!1 &1162537811
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,6 +911,7 @@ GameObject:
   - component: {fileID: 1229981366}
   - component: {fileID: 1229981368}
   - component: {fileID: 1229981369}
+  - component: {fileID: 1229981370}
   m_Layer: 5
   m_Name: Pill 3
   m_TagString: Untagged
@@ -951,7 +983,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229981364}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d964b31c526eec43b2ba1fe32904b20, type: 3}
   m_Name: 
@@ -971,6 +1003,21 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1229981370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229981364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e0cb5ac34a49b48bb20ed01ee48881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemCategory: '"pill"'
+  startPosition: {x: 0, y: 0, z: 0}
+  placed: 0
 --- !u!1 &1387573955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1347,6 +1394,7 @@ GameObject:
   - component: {fileID: 1716762554}
   - component: {fileID: 1716762556}
   - component: {fileID: 1716762557}
+  - component: {fileID: 1716762558}
   m_Layer: 5
   m_Name: Pill 2
   m_TagString: Untagged
@@ -1418,7 +1466,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1716762552}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d964b31c526eec43b2ba1fe32904b20, type: 3}
   m_Name: 
@@ -1438,6 +1486,21 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1716762558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716762552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e0cb5ac34a49b48bb20ed01ee48881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemCategory: '"pill"'
+  startPosition: {x: 0, y: 0, z: 0}
+  placed: 0
 --- !u!1 &1764288817
 GameObject:
   m_ObjectHideFlags: 0
@@ -1451,6 +1514,7 @@ GameObject:
   - component: {fileID: 1764288819}
   - component: {fileID: 1764288821}
   - component: {fileID: 1764288822}
+  - component: {fileID: 1764288823}
   m_Layer: 5
   m_Name: Pill 4
   m_TagString: Untagged
@@ -1522,7 +1586,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1764288817}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d964b31c526eec43b2ba1fe32904b20, type: 3}
   m_Name: 
@@ -1542,6 +1606,21 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1764288823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764288817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e0cb5ac34a49b48bb20ed01ee48881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemCategory: '"pill"'
+  startPosition: {x: 0, y: 0, z: 0}
+  placed: 0
 --- !u!1 &1803941491
 GameObject:
   m_ObjectHideFlags: 0
@@ -1555,6 +1634,7 @@ GameObject:
   - component: {fileID: 1803941493}
   - component: {fileID: 1803941495}
   - component: {fileID: 1803941496}
+  - component: {fileID: 1803941497}
   m_Layer: 5
   m_Name: Pill 1
   m_TagString: Untagged
@@ -1626,7 +1706,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803941491}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d964b31c526eec43b2ba1fe32904b20, type: 3}
   m_Name: 
@@ -1646,6 +1726,21 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1803941497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803941491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e0cb5ac34a49b48bb20ed01ee48881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemCategory: '"pill"'
+  startPosition: {x: 0, y: 0, z: 0}
+  placed: 0
 --- !u!1 &1882177159
 GameObject:
   m_ObjectHideFlags: 0
@@ -1659,6 +1754,7 @@ GameObject:
   - component: {fileID: 1882177161}
   - component: {fileID: 1882177163}
   - component: {fileID: 1882177164}
+  - component: {fileID: 1882177165}
   m_Layer: 5
   m_Name: bandage
   m_TagString: Untagged
@@ -1730,7 +1826,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1882177159}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d964b31c526eec43b2ba1fe32904b20, type: 3}
   m_Name: 
@@ -1750,6 +1846,21 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1882177165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882177159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e0cb5ac34a49b48bb20ed01ee48881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemCategory: '"bandage"'
+  startPosition: {x: 0, y: 0, z: 0}
+  placed: 0
 --- !u!1 &2122748177
 GameObject:
   m_ObjectHideFlags: 0
