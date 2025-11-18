@@ -20,7 +20,3 @@ public class PillFill_LevelData : ScriptableObject
     //public Sprite background;
     public string instructionText = "Collect the pills!";
 }
-
-
-
-
