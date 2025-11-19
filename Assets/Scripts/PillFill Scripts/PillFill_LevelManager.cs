@@ -50,7 +50,10 @@ public class PillFill_LevelManager : MonoBehaviour
     {
         Debug.Log("LEVEL COMPLETED: " + (currentLevelIndex + 1));
 
-        LoadNextLevel();
+        //LoadNextLevel();
+        PillFill_LevelUI.Instance.ShowLevelComplete(currentLevelIndex + 1);
+
+        Invoke(nameof(LoadNextLevel), 2f); // wait 2 sec before next level
     }
 
     private void LoadNextLevel()
