@@ -161,7 +161,6 @@ GameObject:
   - component: {fileID: 7397300113577338202}
   - component: {fileID: 9147042334241921092}
   - component: {fileID: 1194634593960236968}
-  - component: {fileID: 718464380448303055}
   - component: {fileID: 1571721153230404809}
   - component: {fileID: 724515845099793347}
   m_Layer: 5
@@ -230,21 +229,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &718464380448303055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8563255682837800349}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d964b31c526eec43b2ba1fe32904b20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemCategory: '"pill"'
-  startPosition: {x: 0, y: 0, z: 0}
-  placed: 0
 --- !u!225 &1571721153230404809
 CanvasGroup:
   m_ObjectHideFlags: 0
