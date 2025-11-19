@@ -482,7 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b4ea7de3f9ba93439c11a7aa8a71ea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glow: {fileID: 0}
+  glow: {fileID: 1476824374}
   targetBox: {fileID: 89642704}
   dropRange: 100
 --- !u!4 &359679701
@@ -1149,6 +1149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   feedbackText: {fileID: 565208852}
   levelCompleteUI: {fileID: 136021448}
+  levelCompleteMessage: {fileID: 1719723446}
 --- !u!4 &1176419831
 Transform:
   m_ObjectHideFlags: 0
@@ -1370,6 +1371,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469694474}
   m_CullTransparentMesh: 1
+--- !u!1 &1476824374 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6440183925589167663, guid: d1b258e3c3026424098e86083630e35a, type: 3}
+  m_PrefabInstance: {fileID: 4314778329004615976}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1551136251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1621,7 +1627,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 2.57, y: -52.45}
+  m_AnchoredPosition: {x: 2.57, y: -52.449997}
   m_SizeDelta: {x: 529.03, y: 165.67}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1719723446
