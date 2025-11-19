@@ -11,6 +11,8 @@ public class PillFill_LevelUI : MonoBehaviour
 
     string[] messages = { "Great!", "Nice!", "Perfect!", "Good Job!" };
 
+    public TMP_Text levelCompleteMessage;  // <-- ADD THIS
+
     private void Awake()
     {
         Instance = this;
@@ -43,5 +45,11 @@ public class PillFill_LevelUI : MonoBehaviour
     public void ShowLevelComplete(int level)
     {
         levelCompleteUI.SetActive(true);
+        levelCompleteMessage.text = $"Good job!\nLevel {level} Complete!";
+    }
+
+    public void HideLevelComplete()
+    {
+        levelCompleteUI.SetActive(false);
     }
 }

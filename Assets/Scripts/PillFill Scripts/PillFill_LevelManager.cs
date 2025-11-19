@@ -66,6 +66,9 @@ public class PillFill_LevelManager : MonoBehaviour
             return;
         }
 
+        // HIDE the previous level popup
+        PillFill_LevelUI.Instance.HideLevelComplete();
+
         LoadLevel(nextIndex);
     }
 }
