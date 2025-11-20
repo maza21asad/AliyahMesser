@@ -1,6 +1,7 @@
-using UnityEngine;
-using TMPro;
+using DG.Tweening;
 using System.Collections;
+using TMPro;
+using UnityEngine;
 
 public class PillFill_LevelUI : MonoBehaviour
 {
@@ -44,8 +45,22 @@ public class PillFill_LevelUI : MonoBehaviour
 
     public void ShowLevelComplete(int level)
     {
+        //levelCompleteUI.SetActive(true);
+
+        //levelCompleteMessage.text = $"Good job!\nLevel {level} Complete!";
+        // 1) Hide and prepare starting scale
         levelCompleteUI.SetActive(true);
+        levelCompleteUI.transform.localScale = Vector3.zero;
+
         levelCompleteMessage.text = $"Good job!\nLevel {level} Complete!";
+
+        // 2) Delay 1 second, then popup
+        DOVirtual.DelayedCall(1f, () =>
+        {
+            levelCompleteUI.transform
+                .DOScale(Vector3.one, 0.45f)   // scale animation
+                .SetEase(Ease.OutBack);        // nice pop-out effect
+        });
     }
 
     public void HideLevelComplete()
