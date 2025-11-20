@@ -1,4 +1,4 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -45,21 +45,31 @@ public class PillFill_LevelUI : MonoBehaviour
 
     public void ShowLevelComplete(int level)
     {
-        //levelCompleteUI.SetActive(true);
-
-        //levelCompleteMessage.text = $"Good job!\nLevel {level} Complete!";
-        // 1) Hide and prepare starting scale
+        // Activate & reset scale
         levelCompleteUI.SetActive(true);
-        levelCompleteUI.transform.localScale = Vector3.zero;
+        Transform panel = levelCompleteUI.transform;
 
+        panel.localScale = Vector3.zero;
         levelCompleteMessage.text = $"Good job!\nLevel {level} Complete!";
 
-        // 2) Delay 1 second, then popup
-        DOVirtual.DelayedCall(1f, () =>
+        // SEQUENCE FOR SMOOTH TRANSITION
+        Sequence seq = DOTween.Sequence();
+
+        seq.AppendInterval(1f);   // Delay before showing panel
+
+        // POP-IN
+        seq.Append(panel.DOScale(1f, 0.45f).SetEase(Ease.OutBack));
+
+        seq.AppendInterval(1.5f); // Keep panel visible for a moment
+
+        // POP-OUT (smooth)
+        seq.Append(panel.DOScale(0f, 0.35f).SetEase(Ease.InBack));
+
+        // When pop-out finishes → go to next level
+        seq.OnComplete(() =>
         {
-            levelCompleteUI.transform
-                .DOScale(Vector3.one, 0.45f)   // scale animation
-                .SetEase(Ease.OutBack);        // nice pop-out effect
+            levelCompleteUI.SetActive(false);
+            PillFill_LevelManager.Instance.LoadNextLevel();
         });
     }
 

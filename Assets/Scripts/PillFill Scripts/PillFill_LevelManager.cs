@@ -53,10 +53,10 @@ public class PillFill_LevelManager : MonoBehaviour
         //LoadNextLevel();
         PillFill_LevelUI.Instance.ShowLevelComplete(currentLevelIndex + 1);
 
-        Invoke(nameof(LoadNextLevel), 2f); // wait 2 sec before next level
+        Invoke(nameof(LoadNextLevel), 3.5f); // wait 2 sec before next level
     }
 
-    private void LoadNextLevel()
+    public void LoadNextLevel()
     {
         int nextIndex = currentLevelIndex + 1;
 
@@ -67,7 +67,7 @@ public class PillFill_LevelManager : MonoBehaviour
         }
 
         // HIDE the previous level popup
-        PillFill_LevelUI.Instance.HideLevelComplete();
+        //PillFill_LevelUI.Instance.HideLevelComplete();
 
         LoadLevel(nextIndex);
     }
