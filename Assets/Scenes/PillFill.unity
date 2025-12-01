@@ -1376,6 +1376,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 27d83b537dec8f242a56f20805432973, type: 2}
   - {fileID: 11400000, guid: a7023e4b65c88654eb1c87d11f1812ff, type: 2}
   - {fileID: 11400000, guid: 275c66923efd5e545bdb5af9b4c17b5b, type: 2}
+  rabbitAnimator: {fileID: 116065781}
+  rabbit_idleAnimations:
+  - Rabbit_Idle_Lv1
+  - Rabbit_Idle_Lv2
+  - Rabbit_Idle_Lv3
+  - Rabbit_Idle_Lv4
+  - Rabbit_Idle_Lv5
+  rabbit_reviveAnimations:
+  - Rabbit_Lv1_To_Lv2
+  - Rabbit_Lv2_To_Lv3
+  - Rabbit_Lv3_To_Lv4
+  - Rabbit_Lv4_To_Lv5
+  rabbit_happyAnimation: Rabbit_Happy
 --- !u!4 &1403359357
 Transform:
   m_ObjectHideFlags: 0
