@@ -32,7 +32,7 @@ public class PillDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         if (Vector2.Distance(transform.position, targetBox.position) < dropRange)
         {
             // Correct drop
-            PillFill_LevelUI.Instance.ShowFeedback(); // GOOD! NICELY DONE!
+            PillFill_LevelUI.Instance.ShowFeedback(true); // GOOD! NICELY DONE!
             PillFill_LevelManager.Instance.RegisterPillCollected();
 
             Destroy(gameObject); // remove pill after collecting

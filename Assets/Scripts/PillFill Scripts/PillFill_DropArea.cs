@@ -11,6 +11,27 @@ public class PillFill_DropArea : MonoBehaviour, IDropHandler
         PillFill_DragItem dropped = eventData.pointerDrag.GetComponent<PillFill_DragItem>();
         if (dropped == null) return;
 
+        //if (dropped.itemCategory == "Pill")
+        //{
+        //    dropped.placed = true;
+
+        //    RectTransform pillRect = dropped.GetComponent<RectTransform>();
+        //    RectTransform boxRect = GetComponent<RectTransform>();
+
+        //    // Stop dragging
+        //    dropped.GetComponent<CanvasGroup>().blocksRaycasts = true;
+
+        //    // 🔥 Animate into the box
+        //    AnimatePillIntoBox(pillRect, boxRect);
+
+        //    // Count it
+        //    PillFill_LevelManager.Instance.RegisterPillCollected();
+        //}
+        //else
+        //{
+        //    dropped.placed = false;
+        //}
+
         if (dropped.itemCategory == "Pill")
         {
             dropped.placed = true;
@@ -18,19 +39,17 @@ public class PillFill_DropArea : MonoBehaviour, IDropHandler
             RectTransform pillRect = dropped.GetComponent<RectTransform>();
             RectTransform boxRect = GetComponent<RectTransform>();
 
-            // Stop dragging
-            dropped.GetComponent<CanvasGroup>().blocksRaycasts = true;
-
-            // 🔥 Animate into the box
             AnimatePillIntoBox(pillRect, boxRect);
 
-            // Count it
+            PillFill_LevelUI.Instance.ShowFeedback(true);   // <-- GOOD
             PillFill_LevelManager.Instance.RegisterPillCollected();
         }
         else
         {
+            PillFill_LevelUI.Instance.ShowFeedback(false);  // <-- BAD
             dropped.placed = false;
         }
+
     }
 
     private void AnimatePillIntoBox(RectTransform pill, RectTransform box)
