@@ -56,6 +56,11 @@ public class PillFill_LevelManager : MonoBehaviour
         PlayRabbitIdle(currentLevelIndex);
 
         //PlayCowIdle();
+
+        collectedPills = 0;
+        requiredPills = data.requiredPillCount;
+
+        PillFill_LevelUI.Instance.UpdatePillInstruction(requiredPills);
     }
 
     public void PlayCowYes()
@@ -80,25 +85,6 @@ public class PillFill_LevelManager : MonoBehaviour
 
         cowAnimator.Play(cow_idleAnimation);
     }
-
-    //public void PlayCowIdle()
-    //{
-    //    //cowAnimator.SetTrigger("Cow_Yes");
-    //    cowAnimator.Play(cow_idleAnimation);
-    //}
-    //public void PlayCowYes()
-    //{
-    //    //cowAnimator.SetTrigger("Cow_Yes");
-    //    cowAnimator.Play(cow_yesAnimation);
-    //    PlayCowIdle();
-    //}
-
-    //public void PlayCowNo()
-    //{
-    //    //cowAnimator.SetTrigger("Cow_No");
-    //    cowAnimator.Play(cow_noAnimation);
-    //    PlayCowIdle();
-    //}
 
     private void PlayRabbitIdle(int levelIndex)
     {
@@ -129,13 +115,6 @@ public class PillFill_LevelManager : MonoBehaviour
             string reviveAnim = rabbit_reviveAnimations[currentLevelIndex];
             rabbitAnimator.Play(reviveAnim);
 
-            //// Wait revive animation time
-            //yield return new WaitForSeconds(
-            //    rabbitAnimator.GetCurrentAnimatorStateInfo(0).length
-            //);
-            ////rabbitAnimator.Play(reviveAnim);
-            ///
-
             // Wait 1 frame so Animator updates to reviveAnim
             yield return null;
 
@@ -151,9 +130,6 @@ public class PillFill_LevelManager : MonoBehaviour
 
         // Step 3: Wait until popup animation ends
         yield return new WaitForSeconds(2.2f);
-
-        // Step 4: Load next level
-        //LoadNextLevel();
     }
 
     public void LoadNextLevel()

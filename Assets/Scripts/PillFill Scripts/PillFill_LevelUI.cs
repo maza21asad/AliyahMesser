@@ -8,6 +8,9 @@ public class PillFill_LevelUI : MonoBehaviour
     public static PillFill_LevelUI Instance;
 
     public TextMeshProUGUI feedbackText;
+
+    public TextMeshProUGUI pillInstructionText;
+
     public GameObject levelCompleteUI;
 
     public TMP_Text levelCompleteMessage;
@@ -21,6 +24,13 @@ public class PillFill_LevelUI : MonoBehaviour
         levelCompleteUI.SetActive(false);
         feedbackText.gameObject.SetActive(false);
     }
+
+    public void UpdatePillInstruction(int required)
+    {
+        //pillInstructionText.text = $"Please collect {required} pills";
+        pillInstructionText.text = required == 1 ? "Collect 1 pill for Bunny" : $"Collect {required} pills for Bunny";
+    }
+
 
     public void ShowFeedback(bool isCorrect)
     {

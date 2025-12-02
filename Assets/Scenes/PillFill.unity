@@ -784,7 +784,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Collect Pills
+  m_text: COLLECT 2 PILLS FOR BUNNY
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 07e5c6ff6e9cd02438e08cf3f7dd3162, type: 2}
   m_sharedMaterial: {fileID: 193887545407809935, guid: 07e5c6ff6e9cd02438e08cf3f7dd3162, type: 2}
@@ -811,8 +811,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -877,11 +877,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 759482910}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.66, y: 53.59}
-  m_SizeDelta: {x: 358.91, y: 92.08}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -3, y: -61}
+  m_SizeDelta: {x: -27.72, y: 123.66}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &579797824 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9090942833624210398, guid: 592c6e14673cb2b4480e5a5c523b75d4, type: 3}
@@ -1021,8 +1021,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 755.56995, y: 213.69496}
-  m_SizeDelta: {x: 401.94, y: 284.46}
+  m_AnchoredPosition: {x: 725.0805, y: 177.96}
+  m_SizeDelta: {x: 462.93, y: 355.92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &759482911
 MonoBehaviour:
@@ -1244,6 +1244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   feedbackText: {fileID: 1649575516}
+  pillInstructionText: {fileID: 565208852}
   levelCompleteUI: {fileID: 136021448}
   levelCompleteMessage: {fileID: 1719723446}
 --- !u!4 &1176419831
@@ -1600,7 +1601,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -24}
+  m_AnchoredPosition: {x: 0, y: -35}
   m_SizeDelta: {x: 343.59, y: 65.04}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1649575515
@@ -1640,8 +1641,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4291920953
-  m_fontColor: {r: 0.22352941, g: 0.5176471, b: 0.81960785, a: 1}
+    rgba: 4282765625
+  m_fontColor: {r: 0.2235294, g: 0.81960785, b: 0.27175668, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
