@@ -1,80 +1,4 @@
-﻿//using UnityEngine;
-
-//public class PillFill_LevelManager : MonoBehaviour
-//{
-//    public static PillFill_LevelManager Instance;
-
-//    public PillFill_LevelData[] levels;
-
-//    private int currentLevelIndex = 0;
-
-//    private int collectedPills = 0;
-//    private int requiredPills = 0;
-
-//    private void Awake()
-//    {
-//        Instance = this;
-//    }
-
-//    private void Start()
-//    {
-//        LoadLevel(0); // Start Level 1
-//    }
-
-//    public void LoadLevel(int index)
-//    {
-//        currentLevelIndex = index;
-
-//        PillFill_LevelData data = levels[index];
-
-//        collectedPills = 0;
-//        requiredPills = data.requiredPillCount;
-
-//        // spawn pills + obstacles
-//        PillFill_ItemSpawner.Instance.SpawnLevel(data);
-
-//        //Debug.Log("Loaded Level: " + data.levelName);
-//    }
-
-//    public void RegisterPillCollected()
-//    {
-//        collectedPills++;
-
-//        if (collectedPills >= requiredPills)
-//        {
-//            OnLevelCompleted();
-//        }
-//    }
-
-//    private void OnLevelCompleted()
-//    {
-//        Debug.Log("LEVEL COMPLETED: " + (currentLevelIndex + 1));
-
-//        //LoadNextLevel();
-//        PillFill_LevelUI.Instance.ShowLevelComplete(currentLevelIndex + 1);
-
-//        Invoke(nameof(LoadNextLevel), 3.5f); // wait 2 sec before next level
-//    }
-
-//    public void LoadNextLevel()
-//    {
-//        int nextIndex = currentLevelIndex + 1;
-
-//        if (nextIndex >= levels.Length)
-//        {
-//            Debug.Log("All 5 levels completed!");
-//            return;
-//        }
-
-//        // HIDE the previous level popup
-//        //PillFill_LevelUI.Instance.HideLevelComplete();
-
-//        LoadLevel(nextIndex);
-//    }
-//}
-
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class PillFill_LevelManager : MonoBehaviour
@@ -83,6 +7,12 @@ public class PillFill_LevelManager : MonoBehaviour
 
     [Header("Level Data")]
     public PillFill_LevelData[] levels;
+
+    [Header("Cow Stuff")]
+    public Animator cowAnimator;
+    public string cow_idleAnimation;
+    public string cow_yesAnimation;
+    public string cow_noAnimation;
 
     [Header("Rabbit Animations")]
     public Animator rabbitAnimator;
@@ -124,7 +54,51 @@ public class PillFill_LevelManager : MonoBehaviour
 
         // Play this level's rabbit idle animation
         PlayRabbitIdle(currentLevelIndex);
+
+        //PlayCowIdle();
     }
+
+    public void PlayCowYes()
+    {
+        StartCoroutine(CowPlayThenIdle(cow_yesAnimation));
+    }
+
+    public void PlayCowNo()
+    {
+        StartCoroutine(CowPlayThenIdle(cow_noAnimation));
+    }
+
+    private IEnumerator CowPlayThenIdle(string animName)
+    {
+        cowAnimator.Play(animName);
+
+        yield return null; // wait 1 frame
+
+        float length = cowAnimator.GetCurrentAnimatorStateInfo(0).length;
+
+        yield return new WaitForSeconds(length);
+
+        cowAnimator.Play(cow_idleAnimation);
+    }
+
+    //public void PlayCowIdle()
+    //{
+    //    //cowAnimator.SetTrigger("Cow_Yes");
+    //    cowAnimator.Play(cow_idleAnimation);
+    //}
+    //public void PlayCowYes()
+    //{
+    //    //cowAnimator.SetTrigger("Cow_Yes");
+    //    cowAnimator.Play(cow_yesAnimation);
+    //    PlayCowIdle();
+    //}
+
+    //public void PlayCowNo()
+    //{
+    //    //cowAnimator.SetTrigger("Cow_No");
+    //    cowAnimator.Play(cow_noAnimation);
+    //    PlayCowIdle();
+    //}
 
     private void PlayRabbitIdle(int levelIndex)
     {
@@ -133,7 +107,7 @@ public class PillFill_LevelManager : MonoBehaviour
             string anim = rabbit_idleAnimations[levelIndex];
             rabbitAnimator.Play(anim);
         }
-    }
+    }    
 
     public void RegisterPillCollected()
     {

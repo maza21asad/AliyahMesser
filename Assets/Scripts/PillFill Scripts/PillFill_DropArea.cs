@@ -11,27 +11,6 @@ public class PillFill_DropArea : MonoBehaviour, IDropHandler
         PillFill_DragItem dropped = eventData.pointerDrag.GetComponent<PillFill_DragItem>();
         if (dropped == null) return;
 
-        //if (dropped.itemCategory == "Pill")
-        //{
-        //    dropped.placed = true;
-
-        //    RectTransform pillRect = dropped.GetComponent<RectTransform>();
-        //    RectTransform boxRect = GetComponent<RectTransform>();
-
-        //    // Stop dragging
-        //    dropped.GetComponent<CanvasGroup>().blocksRaycasts = true;
-
-        //    // 🔥 Animate into the box
-        //    AnimatePillIntoBox(pillRect, boxRect);
-
-        //    // Count it
-        //    PillFill_LevelManager.Instance.RegisterPillCollected();
-        //}
-        //else
-        //{
-        //    dropped.placed = false;
-        //}
-
         if (dropped.itemCategory == "Pill")
         {
             dropped.placed = true;
@@ -43,29 +22,19 @@ public class PillFill_DropArea : MonoBehaviour, IDropHandler
 
             PillFill_LevelUI.Instance.ShowFeedback(true);   // <-- GOOD
             PillFill_LevelManager.Instance.RegisterPillCollected();
+            PillFill_LevelManager.Instance.PlayCowYes();
         }
         else
         {
             PillFill_LevelUI.Instance.ShowFeedback(false);  // <-- BAD
             dropped.placed = false;
+            PillFill_LevelManager.Instance.PlayCowNo();
         }
 
     }
 
     private void AnimatePillIntoBox(RectTransform pill, RectTransform box)
     {
-        //Vector3 targetPos = box.position;
-
-        //Sequence seq = DOTween.Sequence();
-
-        //seq.Append(pill.DOMove(targetPos, 0.3f).SetEase(Ease.OutQuad))
-        //   .Join(pill.DOScale(0.7f, 0.3f))	// shrink a bit
-        //   .Append(pill.DOScale(0f, 0.2f))  // disappear inside
-        //   .OnComplete(() =>
-        //   {
-        //       pill.gameObject.SetActive(false);  // hide after entering
-        //   });
-
         Vector3 boxPos = box.position;
 
         // Start above the box by some pixels

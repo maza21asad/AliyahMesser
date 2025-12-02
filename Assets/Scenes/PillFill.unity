@@ -1377,6 +1377,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 27d83b537dec8f242a56f20805432973, type: 2}
   - {fileID: 11400000, guid: a7023e4b65c88654eb1c87d11f1812ff, type: 2}
   - {fileID: 11400000, guid: 275c66923efd5e545bdb5af9b4c17b5b, type: 2}
+  cowAnimator: {fileID: 630944058}
+  cow_idleAnimation: Cow_Idle
+  cow_yesAnimation: Cow_Yes
+  cow_noAnimation: Cow_No
   rabbitAnimator: {fileID: 116065781}
   rabbit_idleAnimations:
   - Rabbit_Idle_Lv1
