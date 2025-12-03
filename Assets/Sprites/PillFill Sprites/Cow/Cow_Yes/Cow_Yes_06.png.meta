@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a49b7c750fc6b074c983c4ad8b7d2e57
+guid: 29b9325e65c5342489a9b7e97a13e38f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7537616356313737437
-    second: Idle_Open_L6_04_0
+      213: 8324710817640151608
+    second: Cow_Yes_06_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle_Open_L6_04_0
+      name: Cow_Yes_06_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 0
-        width: 115
-        height: 165
+        x: 13
+        y: 7
+        width: 137
+        height: 202
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 327deb42cd1056790800000000000000
-      internalID: -7537616356313737437
+      spriteID: 83afa47e160578370800000000000000
+      internalID: 8324710817640151608
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Idle_Open_L6_04_0: -7537616356313737437
+      Cow_Yes_06_0: 8324710817640151608
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
