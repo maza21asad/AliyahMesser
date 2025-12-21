@@ -65,7 +65,7 @@ public class PillFill_LevelUI : MonoBehaviour
         Transform panel = levelCompleteUI.transform;
 
         panel.localScale = Vector3.zero;
-        levelCompleteMessage.text = $"Good job!\nLevel {level} Complete!";
+        levelCompleteMessage.text = $"Dose {level}\nComplete!";
 
         Sequence seq = DOTween.Sequence();
 
