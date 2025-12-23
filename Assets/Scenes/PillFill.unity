@@ -205,7 +205,6 @@ GameObject:
   - component: {fileID: 89642704}
   - component: {fileID: 89642706}
   - component: {fileID: 89642705}
-  - component: {fileID: 89642707}
   - component: {fileID: 89642708}
   m_Layer: 5
   m_Name: box
@@ -271,18 +270,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 89642703}
   m_CullTransparentMesh: 1
---- !u!114 &89642707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 89642703}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1b188e9433fb0b4d81700ed6b28431b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &89642708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,7 +397,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &136021449
 RectTransform:
   m_ObjectHideFlags: 0
