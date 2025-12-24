@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2188344892708822763
+--- !u!1 &8604357481483193589
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,26 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3354956230701913501}
-  - component: {fileID: 8488265290285001819}
-  - component: {fileID: 6735229473730815434}
-  - component: {fileID: 4328574324194034711}
-  - component: {fileID: 7795390456464884197}
+  - component: {fileID: 5496002364338503945}
+  - component: {fileID: 3661396130164745897}
+  - component: {fileID: 5267460414032844213}
+  - component: {fileID: 5880852484440930838}
   m_Layer: 5
-  m_Name: Bandage
+  m_Name: Mask_slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &3354956230701913501
+--- !u!224 &5496002364338503945
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2188344892708822763}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 8604357481483193589}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -36,24 +35,24 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 221, y: 0}
-  m_SizeDelta: {x: 87.6, y: 89.542}
+  m_AnchoredPosition: {x: 506, y: 6}
+  m_SizeDelta: {x: 160.62, y: 88.77}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &8488265290285001819
+--- !u!222 &3661396130164745897
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2188344892708822763}
+  m_GameObject: {fileID: 8604357481483193589}
   m_CullTransparentMesh: 1
---- !u!114 &6735229473730815434
+--- !u!114 &5267460414032844213
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2188344892708822763}
+  m_GameObject: {fileID: 8604357481483193589}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -67,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2228196309495851466, guid: a00bf5cda01c7e14096265cc004a6197, type: 3}
+  m_Sprite: {fileID: -522215269814397688, guid: 7fdd65f9810d2f3439ca148e93f5e3a8, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -77,28 +76,16 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!225 &4328574324194034711
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2188344892708822763}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
---- !u!114 &7795390456464884197
+--- !u!114 &5880852484440930838
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2188344892708822763}
+  m_GameObject: {fileID: 8604357481483193589}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bac41c3a8b83e0249825e13adb0b7a2d, type: 3}
+  m_Script: {fileID: 11500000, guid: d9b457f1ec37bda46a15a97ba8c247ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: '"Bandage"'
+  acceptedType: '"Mask"'

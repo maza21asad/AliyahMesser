@@ -9,6 +9,9 @@ public class RR_LevelUI : MonoBehaviour
     public TextMeshProUGUI instructionText;
     public GameObject levelCompletePanel;
 
+    public Color correctColor = new Color(0.2f, 0.8f, 0.3f);
+    public Color wrongColor = new Color(0.9f, 0.2f, 0.2f);
+
     string[] good = { "Correct!", "Nice!", "Well done!" };
     string[] bad = { "Wrong!", "Try again!", "Not here!" };
 
@@ -27,6 +30,8 @@ public class RR_LevelUI : MonoBehaviour
         feedbackText.text = correct
             ? good[Random.Range(0, good.Length)]
             : bad[Random.Range(0, bad.Length)];
+
+        feedbackText.color = correct ? correctColor : wrongColor;
 
         feedbackText.gameObject.SetActive(true);
         Invoke(nameof(HideFeedback), 1f);

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 425019601116642344}
   - component: {fileID: 4467972522668059860}
   - component: {fileID: 7877543814331599394}
-  - component: {fileID: 473206510550959514}
   - component: {fileID: 1631024722054714939}
   m_Layer: 5
   m_Name: Med_slot
@@ -36,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -411, y: 3}
+  m_AnchoredPosition: {x: -467, y: 8}
   m_SizeDelta: {x: 75.654, y: 95.05}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4467972522668059860
@@ -77,19 +76,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &473206510550959514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7215380769591944041}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6b79908addda044fac1c86a11231e45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  acceptedType: '"Med"'
 --- !u!114 &1631024722054714939
 MonoBehaviour:
   m_ObjectHideFlags: 0

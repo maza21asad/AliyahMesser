@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1635527236815083215}
   - component: {fileID: 7649126637187774998}
   - component: {fileID: 5892027087229844274}
-  - component: {fileID: 8531226883010452470}
   - component: {fileID: 2329093183419313978}
   m_Layer: 5
   m_Name: Bandage_slot
@@ -36,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 82, y: 8.810028}
+  m_AnchoredPosition: {x: 29, y: 6}
   m_SizeDelta: {x: 87.6, y: 89.542}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7649126637187774998
@@ -77,19 +76,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8531226883010452470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 479017205433849851}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6b79908addda044fac1c86a11231e45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  acceptedType: '"Bandage"'
 --- !u!114 &2329093183419313978
 MonoBehaviour:
   m_ObjectHideFlags: 0

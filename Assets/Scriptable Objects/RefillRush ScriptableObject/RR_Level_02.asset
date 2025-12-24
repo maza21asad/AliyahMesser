@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50d0bf365c6ec0f4199595ceedc7a435, type: 3}
-  m_Name: RR_Level_01
+  m_Name: RR_Level_02
   m_EditorClassIdentifier: 
   itemPrefabs:
+  - {fileID: 2188344892708822763, guid: 6c2b52684b466bc4ea2ad8b24f267d44, type: 3}
   - {fileID: 3076909736308605307, guid: f3c8b4d5678db1d40a74c9170beb59b1, type: 3}
   - {fileID: 8556351710662189406, guid: 8663c4c0943689a43b3f1e153b90ba29, type: 3}
   slotPrefabs:
+  - {fileID: 479017205433849851, guid: 4dac01d51bcd74443aaf71d784437e9c, type: 3}
   - {fileID: 7838265101290311033, guid: d44d933127ffbf648ba0a587f2801838, type: 3}
   - {fileID: 7215380769591944041, guid: cd4613ac632a0c548a1be7e286f192fa, type: 3}
-  requiredCorrectPlacements: 2
+  requiredCorrectPlacements: 3
   instructionText: Restock The Shelves
