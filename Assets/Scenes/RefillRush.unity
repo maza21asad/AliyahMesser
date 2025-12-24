@@ -1280,7 +1280,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1398822911
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1374,10 +1374,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   feedbackText: {fileID: 1944241940}
-  instructionText: {fileID: 2053027021}
-  levelCompletePanel: {fileID: 1398822910}
   correctColor: {r: 0.2, g: 0.8, b: 0.3, a: 1}
   wrongColor: {r: 0.9, g: 0.2, b: 0.2, a: 1}
+  instructionText: {fileID: 2053027021}
+  levelCompletePanel: {fileID: 1398822910}
+  levelCompleteText: {fileID: 47847536}
 --- !u!4 &1425836636
 Transform:
   m_ObjectHideFlags: 0
