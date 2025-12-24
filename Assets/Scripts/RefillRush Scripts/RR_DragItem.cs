@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class RR_DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
@@ -42,3 +42,4 @@ public class RR_DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         placed = true;
     }
 }
+
