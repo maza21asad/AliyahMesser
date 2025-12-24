@@ -1469,6 +1469,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9916082bd1aed76478e68c5186cea139, type: 2}
   - {fileID: 11400000, guid: 4cc010c75ca3bf14dbf52edad40f6c93, type: 2}
   - {fileID: 11400000, guid: 5c2c1d0578eca1341a3b3f9d43c2de13, type: 2}
+  racAnimator: {fileID: 1784461766}
+  racIdleAnimation: Rac_Idle
+  racYesAnimation: Rac_Yes
+  racNoAnimation: Rac_No
 --- !u!4 &1760006043
 Transform:
   m_ObjectHideFlags: 0
@@ -1542,7 +1546,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3220126319726505337, guid: 673c9d65d8209be49aa58bd844db3948, type: 3}
+  m_Sprite: {fileID: -6003409079283207195, guid: 06d9707a7b770d84a905649e990101aa, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

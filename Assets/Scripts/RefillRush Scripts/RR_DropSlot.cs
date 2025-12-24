@@ -26,6 +26,7 @@ public class RR_DropSlot : MonoBehaviour, IDropHandler
         else
         {
             RR_LevelUI.Instance.ShowFeedback(false);
+            RR_LevelManager.Instance.RegisterWrongPlacement();
         }
     }
 }
