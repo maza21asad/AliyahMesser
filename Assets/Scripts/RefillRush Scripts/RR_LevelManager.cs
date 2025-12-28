@@ -25,7 +25,7 @@ public class RR_LevelManager : MonoBehaviour
     private void Start()
     {
         LoadLevel(0);
-        PlayIdle();   //=========
+        PlayIdle();
     }
 
     public void LoadLevel(int index)
@@ -36,22 +36,27 @@ public class RR_LevelManager : MonoBehaviour
         RR_ItemSpawner.Instance.Spawn(levels[index]);
         RR_LevelUI.Instance.SetInstruction(levels[index].instructionText);
 
-        PlayIdle(); //=========
+        PlayIdle();
     }
 
     // ---------------- REGISTER RESULT ----------------
     public void RegisterCorrectPlacement()
     {
         correctCount++;
-        PlayYes(); //=========
+        PlayYes();
 
         if (correctCount >= levels[currentLevel].requiredCorrectPlacements)
         {
-            RR_LevelUI.Instance.ShowLevelComplete(currentLevel + 1);
+            StartCoroutine(LevelCompleteDelay());
         }
     }
 
-    //=========
+    IEnumerator LevelCompleteDelay()
+    {
+        yield return new WaitForSeconds(1.5f);
+        RR_LevelUI.Instance.ShowLevelComplete(currentLevel + 1);
+    }
+
     public void RegisterWrongPlacement()
     {
         PlayNo();
@@ -86,16 +91,6 @@ public class RR_LevelManager : MonoBehaviour
     }
 
     // ---------------- NEXT LEVEL ----------------
-    //public void LoadNextLevel()
-    //{
-    //    if (currentLevel + 1 >= levels.Length)
-    //    {
-    //        Debug.Log("All RefillRush levels complete!");
-    //        return;
-    //    }
-
-    //    LoadLevel(currentLevel + 1);
-    //}
     public void LoadNextLevel()
     {
         int nextLevel = currentLevel + 1;

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 89f933c16b229f54b9aeefa2868a3b9c
+guid: 22951a957eb019b4bbe9eb8038422829
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2655227241507909247
-    second: Cow_No_V2_03_0
+      213: 2678030140184063637
+    second: Cow_No_V2_05_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cow_No_V2_03_0
+      name: Cow_No_V2_05_0
       rect:
         serializedVersion: 2
         x: 11
         y: 0
         width: 139
-        height: 202
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1811bff44ecb62bd0800000000000000
-      internalID: -2655227241507909247
+      spriteID: 59ee57349364a2520800000000000000
+      internalID: 2678030140184063637
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Cow_No_V2_03_0: -2655227241507909247
+      Cow_No_V2_05_0: 2678030140184063637
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
