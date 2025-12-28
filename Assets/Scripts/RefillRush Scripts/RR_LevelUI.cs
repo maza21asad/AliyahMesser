@@ -85,8 +85,7 @@ public class RR_LevelUI : MonoBehaviour
         levelCompleteText.text = $"Level {level} Complete!";
 
         // APPEAR animation (keep DOTween)
-        panel.DOScale(1f, 0.45f)
-             .SetEase(Ease.OutBack)
+        panel.DOScale(1f, 0.45f).SetEase(Ease.OutBack)
              .OnComplete(() =>
              {
                  // Now wait for player input
@@ -100,10 +99,8 @@ public class RR_LevelUI : MonoBehaviour
     {
         tapToContinueText.gameObject.SetActive(true);
 
-        tapBlinkTween = tapToContinueText
-            .DOFade(0.3f, 1f)
-            .SetEase(Ease.InOutSine)
-            .SetLoops(-1, LoopType.Yoyo);
+        tapBlinkTween = tapToContinueText.DOFade(0.3f, 1f)
+            .SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
     }
 
 
@@ -138,7 +135,7 @@ public class RR_LevelUI : MonoBehaviour
         panel.localScale = Vector3.zero;
 
         allLevelsCompleteText.text =
-            "Congratulations!\nYou have completed all the levels";
+            "You have completed all the levels";
 
         panel.DOScale(1f, 0.5f)
              .SetEase(Ease.OutBack);
