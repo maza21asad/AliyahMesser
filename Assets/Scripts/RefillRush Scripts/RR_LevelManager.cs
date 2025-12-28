@@ -86,14 +86,30 @@ public class RR_LevelManager : MonoBehaviour
     }
 
     // ---------------- NEXT LEVEL ----------------
+    //public void LoadNextLevel()
+    //{
+    //    if (currentLevel + 1 >= levels.Length)
+    //    {
+    //        Debug.Log("All RefillRush levels complete!");
+    //        return;
+    //    }
+
+    //    LoadLevel(currentLevel + 1);
+    //}
     public void LoadNextLevel()
     {
-        if (currentLevel + 1 >= levels.Length)
+        int nextLevel = currentLevel + 1;
+
+        if (nextLevel >= levels.Length)
         {
             Debug.Log("All RefillRush levels complete!");
+
+            // SHOW FINAL PANEL
+            RR_LevelUI.Instance.ShowAllLevelsComplete();
             return;
         }
 
-        LoadLevel(currentLevel + 1);
+        LoadLevel(nextLevel);
     }
+
 }

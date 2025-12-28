@@ -22,6 +22,10 @@ public class RR_LevelUI : MonoBehaviour
     public TMP_Text levelCompleteText;
     public TextMeshProUGUI tapToContinueText;
 
+    [Header("All Levels Complete")]
+    public GameObject allLevelsCompletePanel;
+    public TextMeshProUGUI allLevelsCompleteText;
+
     private Tween tapBlinkTween;
 
     private bool waitForPlayerTouch = false;
@@ -32,6 +36,7 @@ public class RR_LevelUI : MonoBehaviour
 
         levelCompletePanel.SetActive(false);
         feedbackText.gameObject.SetActive(false);
+        allLevelsCompletePanel.SetActive(false);
     }
 
     private void Update()
@@ -124,4 +129,19 @@ public class RR_LevelUI : MonoBehaviour
                  });
         }
     }
+
+    public void ShowAllLevelsComplete()
+    {
+        allLevelsCompletePanel.SetActive(true);
+
+        Transform panel = allLevelsCompletePanel.transform;
+        panel.localScale = Vector3.zero;
+
+        allLevelsCompleteText.text =
+            "Congratulations!\nYou have completed all the levels";
+
+        panel.DOScale(1f, 0.5f)
+             .SetEase(Ease.OutBack);
+    }
+
 }
