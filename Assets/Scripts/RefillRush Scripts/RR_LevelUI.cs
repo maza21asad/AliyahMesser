@@ -11,15 +11,18 @@ public class RR_LevelUI : MonoBehaviour
     public Color correctColor = new Color(0.2f, 0.8f, 0.3f);
     public Color wrongColor = new Color(0.9f, 0.2f, 0.2f);
 
+    public string[] good = { "Correct!", "Nice!", "Well done!" };
+    public string[] bad = { "Wrong!", "Try again!", "Not here!" };
+
     [Header("Instruction")]
     public TextMeshProUGUI instructionText;
 
     [Header("Level Complete Panel")]
     public GameObject levelCompletePanel;
     public TMP_Text levelCompleteText;
+    public TextMeshProUGUI tapToContinueText;
 
-    string[] good = { "Correct!", "Nice!", "Well done!" };
-    string[] bad = { "Wrong!", "Try again!", "Not here!" };
+    private Tween tapBlinkTween;
 
     private bool waitForPlayerTouch = false;
 
@@ -27,8 +30,8 @@ public class RR_LevelUI : MonoBehaviour
     {
         Instance = this;
 
-        //levelCompletePanel.SetActive(false);
-        //feedbackText.gameObject.SetActive(false);
+        levelCompletePanel.SetActive(false);
+        feedbackText.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -74,7 +77,7 @@ public class RR_LevelUI : MonoBehaviour
         Transform panel = levelCompletePanel.transform;
         panel.localScale = Vector3.zero;
 
-        levelCompleteText.text = $"Level {level}\nComplete!";
+        levelCompleteText.text = $"Level {level} Complete!";
 
         // APPEAR animation (keep DOTween)
         panel.DOScale(1f, 0.45f)
@@ -83,16 +86,32 @@ public class RR_LevelUI : MonoBehaviour
              {
                  // Now wait for player input
                  waitForPlayerTouch = true;
+
+                 StartTapToContinue();
              });
     }
 
-    public void HandleLevelCompleteTouch()
+    void StartTapToContinue()
+    {
+        tapToContinueText.gameObject.SetActive(true);
+
+        tapBlinkTween = tapToContinueText
+            .DOFade(0.2f, 0.7f)
+            .SetEase(Ease.InOutSine)
+            .SetLoops(-1, LoopType.Yoyo);
+    }
+
+
+    void HandleLevelCompleteTouch()
     {
         if (!waitForPlayerTouch) return;
 
         if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
         {
             waitForPlayerTouch = false;
+
+            if (tapBlinkTween != null)
+                tapBlinkTween.Kill();
 
             Transform panel = levelCompletePanel.transform;
 
