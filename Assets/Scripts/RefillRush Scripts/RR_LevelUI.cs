@@ -101,7 +101,7 @@ public class RR_LevelUI : MonoBehaviour
         tapToContinueText.gameObject.SetActive(true);
 
         tapBlinkTween = tapToContinueText
-            .DOFade(0.2f, 0.7f)
+            .DOFade(0.3f, 1f)
             .SetEase(Ease.InOutSine)
             .SetLoops(-1, LoopType.Yoyo);
     }
