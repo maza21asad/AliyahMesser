@@ -21,12 +21,19 @@ public class RR_LevelUI : MonoBehaviour
     string[] good = { "Correct!", "Nice!", "Well done!" };
     string[] bad = { "Wrong!", "Try again!", "Not here!" };
 
+    private bool waitForPlayerTouch = false;
+
     private void Awake()
     {
         Instance = this;
 
         //levelCompletePanel.SetActive(false);
         //feedbackText.gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        HandleLevelCompleteTouch();
     }
 
     // ------------------ INSTRUCTION ------------------
@@ -60,38 +67,42 @@ public class RR_LevelUI : MonoBehaviour
         });
     }
 
-    //void HideFeedback()
-    //{
-    //    feedbackText.gameObject.SetActive(false);
-    //}
-
-    // ------------------ LEVEL COMPLETE ------------------
     public void ShowLevelComplete(int level)
     {
         levelCompletePanel.SetActive(true);
-        //Invoke(nameof(Next), 2f);
-        Transform panel = levelCompletePanel.transform;
 
+        Transform panel = levelCompletePanel.transform;
         panel.localScale = Vector3.zero;
+
         levelCompleteText.text = $"Level {level}\nComplete!";
 
-        Sequence seq = DOTween.Sequence();
-
-        seq.AppendInterval(1f); // small delay
-        seq.Append(panel.DOScale(1f, 0.45f).SetEase(Ease.OutBack));
-        seq.AppendInterval(1.5f); // visible time
-        seq.Append(panel.DOScale(0f, 0.35f).SetEase(Ease.InBack));
-
-        seq.OnComplete(() =>
-        {
-            levelCompletePanel.SetActive(false);
-            RR_LevelManager.Instance.LoadNextLevel();
-        });
+        // APPEAR animation (keep DOTween)
+        panel.DOScale(1f, 0.45f)
+             .SetEase(Ease.OutBack)
+             .OnComplete(() =>
+             {
+                 // Now wait for player input
+                 waitForPlayerTouch = true;
+             });
     }
 
-    //void Next()
-    //{
-    //    levelCompletePanel.SetActive(false);
-    //    RR_LevelManager.Instance.LoadNextLevel();
-    //}
+    public void HandleLevelCompleteTouch()
+    {
+        if (!waitForPlayerTouch) return;
+
+        if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
+        {
+            waitForPlayerTouch = false;
+
+            Transform panel = levelCompletePanel.transform;
+
+            panel.DOScale(0f, 0.35f)
+                 .SetEase(Ease.InBack)
+                 .OnComplete(() =>
+                 {
+                     levelCompletePanel.SetActive(false);
+                     RR_LevelManager.Instance.LoadNextLevel();
+                 });
+        }
+    }
 }
