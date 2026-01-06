@@ -27,7 +27,6 @@ public class RR_LevelUI : MonoBehaviour
     public TextMeshProUGUI allLevelsCompleteText;
 
     private Tween tapBlinkTween;
-
     private bool waitForPlayerTouch = false;
 
     private void Awake()

@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: PillFill_Level5
   m_EditorClassIdentifier: 
   pillCount: 5
-  obstacleCount: 2
+  obstacleCount: 4
   pillPrefabs:
   - {fileID: 2529562376126991901, guid: d1b258e3c3026424098e86083630e35a, type: 3}
   - {fileID: 8563255682837800349, guid: 0b811eb9c968a3b4dbd6cbeae7e8912b, type: 3}
   - {fileID: 6709659007148870018, guid: d648704515e73a544aa5a115ca40f679, type: 3}
   - {fileID: 3159931772795489076, guid: b8e349489c24a5844af4f13653d91bc7, type: 3}
-  - {fileID: 2529562376126991901, guid: d1b258e3c3026424098e86083630e35a, type: 3}
+  - {fileID: 7693181014754448992, guid: 9b23c297dea28144a8d09fa019d2a743, type: 3}
   obstaclePrefabs:
   - {fileID: 5153033268791746185, guid: 9080455998d75414a82d1e7b8b8fe3a5, type: 3}
   - {fileID: 5412431037563988254, guid: dfab72f9a5ebc9646a8f35cb950ad85f, type: 3}
+  - {fileID: 7963078406860135525, guid: eef7dba0562365d4b8e73153e894b41f, type: 3}
+  - {fileID: 7928736355193887452, guid: 49aa32ec2ec4dce459f14f9312ed8241, type: 3}
   requiredPillCount: 5
   instructionText: Collect the pills!

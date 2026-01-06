@@ -142,6 +142,8 @@ public class PillFill_LevelManager : MonoBehaviour
 
             rabbitAnimator.Play(rabbit_happyAnimation);
 
+            PillFill_LevelUI.Instance.ShowAllLevelsComplete();
+
             return;
         }
 
