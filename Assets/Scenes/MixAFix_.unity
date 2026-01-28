@@ -1594,8 +1594,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1548530731}
   - {fileID: 906585698}
+  - {fileID: 1548530731}
   m_Father: {fileID: 1471959006}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
@@ -1857,6 +1857,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 783eb59ec9bf4504b823963eb5ce3981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MixAFix_LevelUI
+  completeImage: {fileID: 0}
+  incompleteImage: {fileID: 0}
   correctColor: {r: 0, g: 1, b: 0, a: 1}
   wrongColor: {r: 1, g: 0, b: 0, a: 1}
   feedbackText: {fileID: 1548530733}
@@ -2503,7 +2505,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -368, y: -152}
+  m_AnchoredPosition: {x: -425, y: 199.28}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1392237989
@@ -2784,7 +2786,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 345db367ead62274dbadc5a66db4f26b, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901

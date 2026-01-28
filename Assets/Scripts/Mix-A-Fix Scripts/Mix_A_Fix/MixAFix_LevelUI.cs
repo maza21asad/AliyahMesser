@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using System.Collections;
+using System.Text; // Required for StringBuilder
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,24 +9,27 @@ public class MixAFix_LevelUI : MonoBehaviour
 {
     public static MixAFix_LevelUI Instance;
     
+    public Sprite completeImage;
+    public Sprite incompleteImage;
+    
     [Header("Configuration")]
-    public Color correctColor = Color.green; // Set this in Inspector
-    public Color wrongColor = Color.red;     // Set this in Inspector
+    public Color correctColor = Color.green;
+    public Color wrongColor = Color.red;
 
     [Header("Feedback Popups")]
-    public TextMeshProUGUI feedbackText; // Assign a center-screen text
+    public TextMeshProUGUI feedbackText; 
     
-    // Cooking-themed messages
     string[] goodMsgs = { "Tasty!", "Yum!", "Perfect Mix!", "Good Job!" };
     string[] badMsgs = { "Not that!", "Wrong ingredient!", "Oops!", "Try again!" };
 
     [Header("Instruction Panel")]
-    public TextMeshProUGUI instructionText; // Assign top-screen text
+    public TextMeshProUGUI instructionText; 
 
+    // ... (Keep Level Complete UI variables here) ...
     [Header("Level Complete Panel")]
-    public GameObject levelCompleteUI;       // The panel background
-    public TMP_Text levelCompleteMessage;    // "Level 1 Complete!"
-    public TextMeshProUGUI tapToContinueText; // "Tap to continue"
+    public GameObject levelCompleteUI;       
+    public TMP_Text levelCompleteMessage;    
+    public TextMeshProUGUI tapToContinueText; 
 
     [Header("All Levels Complete")]
     public GameObject allLevelsCompletePanel;
@@ -36,8 +40,7 @@ public class MixAFix_LevelUI : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        
-        // Hide screens initially
+        // ... (Keep existing Awake logic) ...
         if (levelCompleteUI) levelCompleteUI.SetActive(false);
         if (feedbackText) feedbackText.gameObject.SetActive(false);
         if (allLevelsCompletePanel) allLevelsCompletePanel.SetActive(false);
@@ -49,19 +52,68 @@ public class MixAFix_LevelUI : MonoBehaviour
         HandleTouch();
     }
 
-    // --- 1. Instruction Logic ---
+    // ---------------------------------------------------------
+    //  NEW: DYNAMIC INSTRUCTION LIST
+    // ---------------------------------------------------------
     public void UpdateIngredients(int pCur, int pReq, int piCur, int piReq, int yCur, int yReq, int dCur, int dReq)
     {
-        // Simple format: "Powder: 1/2  Pink: 0/1  Yellow: 1/1"
-        // You can use icons (sprites) in TextMeshPro if you want to get fancy later
-        instructionText.text =
-            $"Powder Cream : {pCur}/{pReq}\n" +
-            $"Pink Cream: {piCur}/{piReq}\n" +
-            $"Yellow Cream: {yCur}/{yReq}\n" +
-            $"Dropper: {dCur}/{dReq}";
+        StringBuilder sb = new StringBuilder();
+
+        // 1. POWDER
+        if (pReq > 0)
+        {
+            string label = pReq == 1 ? "SCOOP OF POWDER" : "SCOOPS OF POWDER";
+            AppendInstructionLine(sb, pCur, pReq, label, "#4CAF50"); // Greenish text
+        }
+
+        // 2. PINK CREAM (Matches "Red Cream" in your image)
+        if (piReq > 0)
+        {
+            string label = piReq == 1 ? "SCOOP OF PINK CREAM" : "SCOOPS OF PINK CREAM";
+            AppendInstructionLine(sb, piCur, piReq, label, "#E91E63"); // Pink/Red text
+        }
+
+        // 3. YELLOW CREAM
+        if (yReq > 0)
+        {
+            string label = yReq == 1 ? "SCOOP OF YELLOW CREAM" : "SCOOPS OF YELLOW CREAM";
+            AppendInstructionLine(sb, yCur, yReq, label, "#FFC107"); // Gold/Yellow text
+        }
+
+        // 4. DROPPER (Matches "Blue Drops" in your image)
+        if (dReq > 0)
+        {
+            string label = dReq == 1 ? "BLUE DROP" : "BLUE DROPS"; // Custom label for dropper
+            AppendInstructionLine(sb, dCur, dReq, label, "#2196F3"); // Blue text
+        }
+
+        instructionText.text = sb.ToString();
     }
 
-    // --- 2. Feedback "Juice" (Copied from PillFill) ---
+    // Helper to format the line with Checkmarks/Colors
+    private void AppendInstructionLine(StringBuilder sb, int current, int required, string itemName, string todoColorHex)
+    {
+        bool isComplete = current >= required;
+
+        if (isComplete)
+        {
+            // STYLE: Green Checkmark + Green Text + Strikethrough (optional) or just bold
+            // Format: ☑ ADD {N} {ITEM}
+            sb.AppendLine($"<color=#4CAF50><b>✓  ADD {required} {itemName}</b></color>"); 
+            
+        }
+        else
+        {
+            // STYLE: Empty Circle + Specific Color Text
+            // Format: ○ ADD {N} {ITEM}
+            // using "todoColorHex" allows "Blue Drops" to be blue text, etc.
+            sb.AppendLine($"<color=#9E9E9E>○</color> <color={todoColorHex}><b>ADD {required} {itemName}</b></color>");
+        }
+    }
+
+    // ... (Keep ShowFeedback, ShowLevelComplete, StartTapToContinue, HandleTouch, ShowAllLevelsComplete) ...
+    
+    // Paste the rest of your existing functions here:
     public void ShowFeedback(bool isCorrect)
     {
         string msg = isCorrect
@@ -74,86 +126,47 @@ public class MixAFix_LevelUI : MonoBehaviour
     IEnumerator ShowFeedbackRoutine(string msg, bool isCorrect)
     {
         feedbackText.text = msg;
-    
-        // Logic: If correct, use default color (e.g., White or Green). 
-        // If wrong, use Red.
-        if (isCorrect)
-        {
-            feedbackText.color = correctColor; // Or Color.green, or your original font color
-        }
-        else
-        {
-            feedbackText.color = wrongColor;
-        }
+        if (isCorrect) feedbackText.color = correctColor;
+        else feedbackText.color = wrongColor;
 
         feedbackText.alpha = 1;
         feedbackText.gameObject.SetActive(true);
-
-        // Pop Scale Animation (Copied from your previous script)
         feedbackText.transform.localScale = Vector3.zero;
         feedbackText.transform.DOScale(1f, 0.25f).SetEase(Ease.OutBack);
 
         yield return new WaitForSeconds(0.7f);
-    
-        // Fade Out
         feedbackText.DOFade(0, 0.4f);
         yield return new WaitForSeconds(0.4f);
-    
         feedbackText.gameObject.SetActive(false);
     }
 
-    // Level Complete Logic (Copied from PillFill) ---
     public void ShowLevelComplete(int levelIndex)
     {
         levelCompleteUI.SetActive(true);
         Transform panel = levelCompleteUI.transform;
-        
-        // Reset scale
         panel.localScale = Vector3.zero;
         levelCompleteMessage.text = $"Mix {levelIndex}\nComplete!";
 
-        // Animate Panel In
-        panel.DOScale(1f, 0.45f)
-             .SetEase(Ease.OutBack)
-             .OnComplete(() =>
-             {
-                 waitForPlayerTouch = true;
-                 StartTapToContinue();
-             });
+        panel.DOScale(1f, 0.45f).SetEase(Ease.OutBack)
+             .OnComplete(() => { waitForPlayerTouch = true; StartTapToContinue(); });
     }
 
     void StartTapToContinue()
     {
         tapToContinueText.gameObject.SetActive(true);
-        
-        // Blinking Text Effect
-        tapBlinkTween = tapToContinueText.DOFade(0.3f, 1f)
-            .SetEase(Ease.InOutSine)
-            .SetLoops(-1, LoopType.Yoyo);
+        tapBlinkTween = tapToContinueText.DOFade(0.3f, 1f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
     }
 
     void HandleTouch()
     {
         if (!waitForPlayerTouch) return;
-
-        // Detect click or tap
         if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
         {
             waitForPlayerTouch = false;
-
             if (tapBlinkTween != null) tapBlinkTween.Kill();
             tapToContinueText.gameObject.SetActive(false);
-
-            // Animate Panel Out
-            levelCompleteUI.transform
-                .DOScale(0f, 0.35f)
-                .SetEase(Ease.InBack)
-                .OnComplete(() =>
-                {
-                    levelCompleteUI.SetActive(false);
-                    // TRIGGER NEXT LEVEL
-                    MixAFix_Manager.Instance.LoadNextLevel();
-                });
+            levelCompleteUI.transform.DOScale(0f, 0.35f).SetEase(Ease.InBack)
+                .OnComplete(() => { levelCompleteUI.SetActive(false); MixAFix_Manager.Instance.LoadNextLevel(); });
         }
     }
 
@@ -161,7 +174,6 @@ public class MixAFix_LevelUI : MonoBehaviour
     {
         allLevelsCompletePanel.SetActive(true);
         allLevelsCompletePanel.transform.localScale = Vector3.zero;
-        
         allLevelsCompletePanel.transform.DOScale(1f, 0.5f).SetEase(Ease.OutBack);
     }
 }

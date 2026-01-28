@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MixAFix_LevelData
   requiredPowder: 1
   requiredPinkCream: 1
-  requiredYellowCream: 1
-  requiredDrop: 1
+  requiredYellowCream: 0
+  requiredDrop: 0
