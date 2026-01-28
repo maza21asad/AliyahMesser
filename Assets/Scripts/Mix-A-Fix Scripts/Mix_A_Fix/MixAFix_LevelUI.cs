@@ -102,7 +102,7 @@ public class MixAFix_LevelUI : MonoBehaviour
         feedbackText.gameObject.SetActive(false);
     }
 
-    // --- 3. Level Complete Logic (Copied from PillFill) ---
+    // Level Complete Logic (Copied from PillFill) ---
     public void ShowLevelComplete(int levelIndex)
     {
         levelCompleteUI.SetActive(true);

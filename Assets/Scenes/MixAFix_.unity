@@ -742,8 +742,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -37.31}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 65, y: 296}
-  m_SizeDelta: {x: 149.65, y: 130.21}
+  m_AnchoredPosition: {x: 65, y: 261}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &282703127
 MonoBehaviour:
@@ -821,6 +821,7 @@ GameObject:
   - component: {fileID: 309482724}
   - component: {fileID: 309482726}
   - component: {fileID: 309482725}
+  - component: {fileID: 309482727}
   m_Layer: 5
   m_Name: pink cream
   m_TagString: Untagged
@@ -885,6 +886,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 309482723}
   m_CullTransparentMesh: 1
+--- !u!225 &309482727
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309482723}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &311492482
 GameObject:
   m_ObjectHideFlags: 0
@@ -1304,8 +1317,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -134, y: 246.79}
-  m_SizeDelta: {x: 204.37, y: 113.55}
+  m_AnchoredPosition: {x: -142, y: 216}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &552593774
 CanvasGroup:
@@ -1738,6 +1751,7 @@ GameObject:
   - component: {fileID: 808665976}
   - component: {fileID: 808665978}
   - component: {fileID: 808665977}
+  - component: {fileID: 808665979}
   m_Layer: 5
   m_Name: powder
   m_TagString: Powder
@@ -1802,6 +1816,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 808665975}
   m_CullTransparentMesh: 1
+--- !u!225 &808665979
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808665975}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &838466097
 GameObject:
   m_ObjectHideFlags: 0
@@ -2244,6 +2270,7 @@ GameObject:
   - component: {fileID: 1159860825}
   - component: {fileID: 1159860827}
   - component: {fileID: 1159860826}
+  - component: {fileID: 1159860828}
   m_Layer: 5
   m_Name: bottle
   m_TagString: Untagged
@@ -2308,6 +2335,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159860824}
   m_CullTransparentMesh: 1
+--- !u!225 &1159860828
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159860824}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1179440297
 GameObject:
   m_ObjectHideFlags: 0
@@ -2463,8 +2502,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -420, y: 246.79}
-  m_SizeDelta: {x: 204.37, y: 113.55}
+  m_AnchoredPosition: {x: -424.03, y: 216}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1392237989
 MonoBehaviour:
@@ -2823,6 +2862,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd0160c263a4f21a9f69943981d433b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MixAFix_Manager
+  bowl1CanvasGroup: {fileID: 808665979}
+  bowl2CanvasGroup: {fileID: 1159860828}
+  bowl3CanvasGroup: {fileID: 309482727}
+  bowl4CanvasGroup: {fileID: 808665979}
+  bowl5CanvasGroup: {fileID: 2002721885}
   levels:
   - {fileID: 11400000, guid: 0a0040bea5115f74b899752aa1ee94bf, type: 2}
   - {fileID: 11400000, guid: 1085be8b7c01fd44399cf7c23729c3e8, type: 2}
@@ -3349,8 +3393,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 324, y: 246.79}
-  m_SizeDelta: {x: 204.37, y: 113.55}
+  m_AnchoredPosition: {x: 305, y: 216}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &1930825317
 CanvasGroup:
@@ -3505,6 +3549,7 @@ GameObject:
   - component: {fileID: 2002721882}
   - component: {fileID: 2002721884}
   - component: {fileID: 2002721883}
+  - component: {fileID: 2002721885}
   m_Layer: 5
   m_Name: yellow cream
   m_TagString: Untagged
@@ -3569,6 +3614,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002721881}
   m_CullTransparentMesh: 1
+--- !u!225 &2002721885
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002721881}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2059785032
 GameObject:
   m_ObjectHideFlags: 0
