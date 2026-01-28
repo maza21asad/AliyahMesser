@@ -1,69 +1,124 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class MixAFix_Manager : MonoBehaviour
 {
-    [Header("Event Trigger")]
-    public UnityEvent onDropToBowl; 
+    public static MixAFix_Manager Instance;
 
-    [Header("Targets")]
-    public RectTransform bowl; // Assign the Bowl UI here
+    [Header("Level Data")]
+    public MixAFix_LevelData[] levels; 
+    private int currentLevelIndex = 0;
+    private MixAFix_LevelData currentData;
 
-    [Header("Scoop Counts")]
-    public int powderScoopCount = 0;
-    public int pinkCreamScoopCount = 0;
-    public int yellowCreamScoopCount = 0;
-    public int dropperScoopCount = 0;
+    // Tracking
+    private int collectedPowder = 0;
+    private int collectedPink = 0;
+    private int collectedYellow = 0;
+    private int collectedDropper = 0;
 
-    [Header("UI Feedback")]
-    public int requiredPowderScoops = 2;
-    public Image powderStepTick;
+    [Header("Events")]
+    public UnityEvent onDropToBowl;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
-        if (powderStepTick) powderStepTick.gameObject.SetActive(false);
+        // Give UI a moment to initialize before loading level
+        Invoke(nameof(StartFirstLevel), 0.1f);
     }
 
-    // Only one check needed now
-    public bool IsOverBowl(RectTransform tool)
+    void StartFirstLevel() => LoadLevel(0);
+
+    public void LoadLevel(int index)
     {
-        return RectTransformUtility.RectangleContainsScreenPoint(bowl, tool.position);
+        currentLevelIndex = index;
+
+        if (currentLevelIndex >= levels.Length)
+        {
+            MixAFix_LevelUI.Instance.ShowAllLevelsComplete();
+            return;
+        }
+
+        currentData = levels[currentLevelIndex];
+
+        // Reset
+        collectedPowder = 0;
+        collectedPink = 0;
+        collectedYellow = 0;
+        collectedDropper = 0;
+
+        Debug.Log($"Load Level {index + 1}");
+        
+        // Update UI Text
+        UpdateUI();
     }
 
     public void DropScoops(string type)
     {
-        // Trigger the generic event (Sound, Particle, etc.)
-        if (onDropToBowl != null) onDropToBowl.Invoke();
+        // 1. Logic
+        bool ingredientNeeded = false;
 
-        // Handle Ingredient Logic
         switch (type)
         {
             case "Powder":
-                powderScoopCount++;
-                Debug.Log($"� Powder Added! Total: {powderScoopCount}");
-                
-                // Check if step is complete
-                if (powderScoopCount >= requiredPowderScoops && powderStepTick)
-                {
-                    powderStepTick.gameObject.SetActive(true);
-                }
+                if (collectedPowder < currentData.requiredPowder) { collectedPowder++; ingredientNeeded = true; }
                 break;
-
-            case "YellowCream":
-                yellowCreamScoopCount++;
-                Debug.Log($"💛 Yellow Cream Added! Total: {yellowCreamScoopCount}");
-                break;
-
             case "PinkCream":
-                pinkCreamScoopCount++;
-                Debug.Log($"🟥 Pink Cream Added! Total: {pinkCreamScoopCount}");
+                if (collectedPink < currentData.requiredPinkCream) { collectedPink++; ingredientNeeded = true; }
                 break;
-            
+            case "YellowCream":
+                if (collectedYellow < currentData.requiredYellowCream) { collectedYellow++; ingredientNeeded = true; }
+                break;
             case "Dropper":
-                dropperScoopCount++;
-                Debug.Log($"💧 Dropper Added! Total: {dropperScoopCount}");
+                if (collectedDropper < currentData.requiredDrop) { collectedDropper++; ingredientNeeded = true; }
                 break;
         }
+
+        // 2. Feedback
+        if (ingredientNeeded)
+        {
+            if (onDropToBowl != null) onDropToBowl.Invoke();
+            MixAFix_LevelUI.Instance.ShowFeedback(true); // "Tasty!"
+            UpdateUI();
+            CheckLevelCompletion();
+        }
+        else
+        {
+            // Player added something we already have enough of (Optional: Show "Wrong" message)
+            MixAFix_LevelUI.Instance.ShowFeedback(false); // "Not that!"
+        }
+    }
+
+    private void UpdateUI()
+    {
+        MixAFix_LevelUI.Instance.UpdateIngredients(
+            collectedPowder, currentData.requiredPowder,
+            collectedPink, currentData.requiredPinkCream,
+            collectedYellow, currentData.requiredYellowCream,
+            collectedDropper, currentData.requiredDrop
+        );
+    }
+
+    private void CheckLevelCompletion()
+    {
+        bool pDone = collectedPowder >= currentData.requiredPowder;
+        bool piDone = collectedPink >= currentData.requiredPinkCream;
+        bool yDone = collectedYellow >= currentData.requiredYellowCream;
+        bool dDone = collectedDropper >= currentData.requiredDrop;
+
+        if (pDone && piDone && yDone && dDone)
+        {
+            Debug.Log("Level Complete");
+            // Show the UI Popup (It handles the tap-to-continue logic)
+            MixAFix_LevelUI.Instance.ShowLevelComplete(currentLevelIndex + 1);
+        }
+    }
+
+    public void LoadNextLevel()
+    {
+        LoadLevel(currentLevelIndex + 1);
     }
 }
