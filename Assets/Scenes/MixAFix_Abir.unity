@@ -586,6 +586,7 @@ GameObject:
   - component: {fileID: 282703128}
   - component: {fileID: 282703127}
   - component: {fileID: 282703129}
+  - component: {fileID: 282703130}
   m_Layer: 5
   m_Name: Dropper
   m_TagString: Untagged
@@ -600,17 +601,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 282703125}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.31986895, w: 0.9474618}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1042879331}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -37.31}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 65, y: 282}
-  m_SizeDelta: {x: 134.07, y: 116.66}
+  m_AnchoredPosition: {x: 65, y: 296}
+  m_SizeDelta: {x: 149.65, y: 130.21}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &282703127
 MonoBehaviour:
@@ -665,6 +666,18 @@ MonoBehaviour:
   ingredientType: Dropper
   startPosition: {x: 0, y: 0, z: 0}
   placed: 0
+--- !u!225 &282703130
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282703125}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &309482723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,8 +1093,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -146, y: 234}
-  m_SizeDelta: {x: 183.1, y: 101.73}
+  m_AnchoredPosition: {x: -134, y: 246.79}
+  m_SizeDelta: {x: 204.37, y: 113.55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &552593774
 CanvasGroup:
@@ -1706,15 +1719,15 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1392237988}
+  - {fileID: 1930825316}
+  - {fileID: 552593773}
+  - {fileID: 282703126}
   - {fileID: 68765906}
   - {fileID: 808665976}
   - {fileID: 309482724}
   - {fileID: 2002721882}
   - {fileID: 1159860825}
-  - {fileID: 1392237988}
-  - {fileID: 1930825316}
-  - {fileID: 552593773}
-  - {fileID: 282703126}
   m_Father: {fileID: 972033910}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2137,7 +2150,7 @@ GameObject:
   - component: {fileID: 1392237991}
   - component: {fileID: 1392237992}
   m_Layer: 5
-  m_Name: Powder
+  m_Name: PowderSpoon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2159,8 +2172,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -437.09, y: 234}
-  m_SizeDelta: {x: 183.1, y: 101.73}
+  m_AnchoredPosition: {x: -420, y: 246.79}
+  m_SizeDelta: {x: 204.37, y: 113.55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1392237989
 MonoBehaviour:
@@ -2387,6 +2400,7 @@ MonoBehaviour:
   powderScoopCount: 0
   pinkCreamScoopCount: 0
   yellowCreamScoopCount: 0
+  dropperScoopCount: 0
   requiredPowderScoops: 2
   powderStepTick: {fileID: 0}
 --- !u!1 &1717557266
@@ -2575,8 +2589,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 281.11, y: 234}
-  m_SizeDelta: {x: 183.1, y: 101.73}
+  m_AnchoredPosition: {x: 324, y: 246.79}
+  m_SizeDelta: {x: 204.37, y: 113.55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &1930825317
 CanvasGroup:

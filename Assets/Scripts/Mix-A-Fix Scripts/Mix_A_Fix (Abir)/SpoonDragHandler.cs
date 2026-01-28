@@ -9,40 +9,45 @@ public class SpoonDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 
     [HideInInspector] public Vector3 startPosition;
     [HideInInspector] public bool placed = false;
-    
-    private int originalSiblingIndex;
 
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
     private Vector3 originalScale;
+    
+    // We save this once at the start so we never "forget" the true position
+    private int defaultSiblingIndex;
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
-        
-        // FIX 1: Auto-add CanvasGroup if missing (Like PillFill)
         canvasGroup = GetComponent<CanvasGroup>() ?? gameObject.AddComponent<CanvasGroup>();
-        
         originalScale = transform.localScale;
+    }
+
+    private void Start()
+    {
+        // This permanently remembers where the spoon belongs in the hierarchy.
+        defaultSiblingIndex = transform.GetSiblingIndex();
+        
+        // Also capture start position here to be safe
+        startPosition = rectTransform.position; 
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        startPosition = rectTransform.position;
+        // Stop any active animations immediately.
+        // This prevents the "Return" animation from fighting your new Drag.
+        transform.DOKill();
+
         placed = false;
-        
-        originalSiblingIndex = transform.GetSiblingIndex();
-        
         canvasGroup.blocksRaycasts = false;
         
-        // Bring to front so it renders over everything else
+        // Bring to front
         transform.SetAsLastSibling();
 
-        // "Juice": Scale up slightly
         transform.DOScale(originalScale * 1.15f, 0.2f).SetEase(Ease.OutBack);
     }
 
-    // Drag Logic
     public void OnDrag(PointerEventData eventData)
     {
         Vector2 localPos;
@@ -52,7 +57,6 @@ public class SpoonDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, 
             eventData.pressEventCamera,
             out localPos
         );
-
         rectTransform.localPosition = localPos;
     }
 
@@ -62,27 +66,27 @@ public class SpoonDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 
         if (!placed)
         {
-            // Reset position
+            // Return to start
             rectTransform.DOMove(startPosition, 0.3f).SetEase(Ease.OutQuad)
                 .OnComplete(() => 
                 {
-                    // Restore the original layer order after animation finishes
-                    transform.SetSiblingIndex(originalSiblingIndex);
+                    // Restore to the SAFETY index captured in Start()
+                    transform.SetSiblingIndex(defaultSiblingIndex);
                 });
 
             transform.DOScale(originalScale, 0.2f);
         }
         else
         {
-            // Reset scale if placed successfully
             transform.DOScale(originalScale, 0.2f);
         }
     }
     
+    // Called by the BowlDropArea when it's done pouring
     public void ResetVisuals()
     {
+        transform.DOKill(); // Stop any leftover animations
         transform.localScale = originalScale;
-        // Ensure it goes back to correct layer when returning from bowl
-        transform.SetSiblingIndex(originalSiblingIndex);
+        transform.SetSiblingIndex(defaultSiblingIndex); // Always go back to correct layer
     }
 }
