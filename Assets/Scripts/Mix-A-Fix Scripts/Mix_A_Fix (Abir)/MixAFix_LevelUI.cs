@@ -7,6 +7,10 @@ using UnityEngine.UI;
 public class MixAFix_LevelUI : MonoBehaviour
 {
     public static MixAFix_LevelUI Instance;
+    
+    [Header("Configuration")]
+    public Color correctColor = Color.green; // Set this in Inspector
+    public Color wrongColor = Color.red;     // Set this in Inspector
 
     [Header("Feedback Popups")]
     public TextMeshProUGUI feedbackText; // Assign a center-screen text
@@ -64,25 +68,37 @@ public class MixAFix_LevelUI : MonoBehaviour
             ? goodMsgs[Random.Range(0, goodMsgs.Length)]
             : badMsgs[Random.Range(0, badMsgs.Length)];
 
-        StartCoroutine(ShowFeedbackRoutine(msg));
+        StartCoroutine(ShowFeedbackRoutine(msg, isCorrect));
     }
 
-    IEnumerator ShowFeedbackRoutine(string msg)
+    IEnumerator ShowFeedbackRoutine(string msg, bool isCorrect)
     {
         feedbackText.text = msg;
+    
+        // Logic: If correct, use default color (e.g., White or Green). 
+        // If wrong, use Red.
+        if (isCorrect)
+        {
+            feedbackText.color = correctColor; // Or Color.green, or your original font color
+        }
+        else
+        {
+            feedbackText.color = wrongColor;
+        }
+
         feedbackText.alpha = 1;
         feedbackText.gameObject.SetActive(true);
 
-        // Pop Scale Animation
+        // Pop Scale Animation (Copied from your previous script)
         feedbackText.transform.localScale = Vector3.zero;
         feedbackText.transform.DOScale(1f, 0.25f).SetEase(Ease.OutBack);
 
         yield return new WaitForSeconds(0.7f);
-        
+    
         // Fade Out
         feedbackText.DOFade(0, 0.4f);
         yield return new WaitForSeconds(0.4f);
-        
+    
         feedbackText.gameObject.SetActive(false);
     }
 
