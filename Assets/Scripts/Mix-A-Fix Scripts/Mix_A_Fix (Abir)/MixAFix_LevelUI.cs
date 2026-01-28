@@ -54,7 +54,7 @@ public class MixAFix_LevelUI : MonoBehaviour
             $"Powder Cream : {pCur}/{pReq}\n" +
             $"Pink Cream: {piCur}/{piReq}\n" +
             $"Yellow Cream: {yCur}/{yReq}\n" +
-            $"Dropper Cream: {piCur}/{piReq}";
+            $"Dropper: {dCur}/{dReq}";
     }
 
     // --- 2. Feedback "Juice" (Copied from PillFill) ---

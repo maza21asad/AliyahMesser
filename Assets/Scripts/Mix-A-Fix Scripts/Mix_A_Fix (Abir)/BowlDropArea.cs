@@ -5,29 +5,35 @@ using DG.Tweening;
 public class BowlDropArea : MonoBehaviour, IDropHandler
 {
     [Header("Manager Connection")]
-    public MixAFix_Manager manager; // Drag your Manager here
+    public MixAFix_Manager manager;
 
     public void OnDrop(PointerEventData eventData)
     {
-        // Check if the dropped item is a Spoon
         if (eventData.pointerDrag == null) return;
         
         SpoonDragHandler spoon = eventData.pointerDrag.GetComponent<SpoonDragHandler>();
         
-        if (spoon != null)
+        if (spoon != null && manager != null)
         {
-            // Mark as placed so the Spoon script doesn't snap back immediately
-            spoon.placed = true;
+            // 1. ASK THE MANAGER: Is this ingredient correct?
+            bool wasAccepted = manager.DropScoops(spoon.ingredientType);
 
-            // Game Logic
-            if (manager != null)
+            if (wasAccepted)
             {
-                Debug.Log($"🥣 {spoon.ingredientType} added to bowl!");
-                manager.DropScoops(spoon.ingredientType);
+                // SUCCESS: Mark as placed so DragHandler doesn't interfere
+                spoon.placed = true;
+                Debug.Log($"🥣 {spoon.ingredientType} accepted. Playing animation.");
+                
+                // Play the fancy "Pour" animation
+                AnimateDropAndReturn(spoon);
             }
-
-            // Play the Animation Sequence
-            AnimateDropAndReturn(spoon);
+            else
+            {
+                // FAIL: Do NOT set spoon.placed = true.
+                // The SpoonDragHandler's OnEndDrag will see that 'placed' is false.
+                // It will automatically fly the spoon back to start (Rejection behavior).
+                Debug.Log($"❌ {spoon.ingredientType} rejected. Returning immediately.");
+            }
         }
     }
 
@@ -47,13 +53,12 @@ public class BowlDropArea : MonoBehaviour, IDropHandler
         ///////////   Animation will Here   //////////////
         //////////////////////////////////////////////////
         
-        // Step C: Wait a moment for the player to see it
+        // Pause
         seq.AppendInterval(0.3f);
 
-        // Move BACK to the original Spoon holder
+        // Return Home
         seq.Append(spoonRect.DOMove(spoon.startPosition, 0.5f).SetEase(Ease.InOutQuad));
 
-        // Step E: Reset flag so it can be dragged again
         seq.OnComplete(() => 
         {
             spoon.placed = false;

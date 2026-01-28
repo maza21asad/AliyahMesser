@@ -56,39 +56,57 @@ public class MixAFix_Manager : MonoBehaviour
         UpdateUI();
     }
 
-    public void DropScoops(string type)
+    public bool DropScoops(string type)
     {
-        // 1. Logic
-        bool ingredientNeeded = false;
+        bool isNeeded = false;
 
         switch (type)
         {
             case "Powder":
-                if (collectedPowder < currentData.requiredPowder) { collectedPowder++; ingredientNeeded = true; }
+                if (collectedPowder < currentData.requiredPowder) 
+                { 
+                    collectedPowder++; 
+                    isNeeded = true; 
+                }
                 break;
             case "PinkCream":
-                if (collectedPink < currentData.requiredPinkCream) { collectedPink++; ingredientNeeded = true; }
+                if (collectedPink < currentData.requiredPinkCream) 
+                { 
+                    collectedPink++; 
+                    isNeeded = true; 
+                }
                 break;
             case "YellowCream":
-                if (collectedYellow < currentData.requiredYellowCream) { collectedYellow++; ingredientNeeded = true; }
+                if (collectedYellow < currentData.requiredYellowCream) 
+                { 
+                    collectedYellow++; 
+                    isNeeded = true; 
+                }
                 break;
             case "Dropper":
-                if (collectedDropper < currentData.requiredDrop) { collectedDropper++; ingredientNeeded = true; }
+                if (collectedDropper < currentData.requiredDrop)
+                {
+                    collectedDropper++;
+                    isNeeded = true; 
+                }
                 break;
         }
 
-        // 2. Feedback
-        if (ingredientNeeded)
+        if (isNeeded)
         {
+            // SUCCESS
             if (onDropToBowl != null) onDropToBowl.Invoke();
             MixAFix_LevelUI.Instance.ShowFeedback(true); // "Tasty!"
             UpdateUI();
             CheckLevelCompletion();
+            return true;
         }
         else
         {
-            // Player added something we already have enough of (Optional: Show "Wrong" message)
+            // FAILURE (Wrong ingredient or already full)
+            Debug.Log("❌ Ingredient not needed!");
             MixAFix_LevelUI.Instance.ShowFeedback(false); // "Not that!"
+            return false;
         }
     }
 

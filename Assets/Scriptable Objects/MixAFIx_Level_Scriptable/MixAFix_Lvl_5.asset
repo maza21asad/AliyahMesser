@@ -15,4 +15,4 @@ MonoBehaviour:
   requiredPowder: 5
   requiredPinkCream: 5
   requiredYellowCream: 4
-  requiredDrop: 0
+  requiredDrop: 3
