@@ -39,24 +39,30 @@ public class BowlDropArea : MonoBehaviour, IDropHandler
 
     private void AnimateDropAndReturn(SpoonDragHandler spoon)
     {
+        // 1. Get the Animator component from the spoon
+        Animator spoonAnimator = spoon.GetComponent<Animator>();
         RectTransform spoonRect = spoon.GetComponent<RectTransform>();
         Vector3 bowlCenter = transform.position;
-        
-        // Create a Sequence (Like PillFill_DropArea)
+
+        // 2. Start a Sequence for the movement logic
         Sequence seq = DOTween.Sequence();
 
         // Step A: Move to the center of the bowl (Pour Position)
-        seq.Append(spoonRect.DOMove(bowlCenter + new Vector3(0, 5, 0), 0.4f).SetEase(Ease.OutBack));
-        
-        // @DOTO::
-        // "Pour" animation (Scale down slightly or rotate)
-        ///////////   Animation will Here   //////////////
-        //////////////////////////////////////////////////
-        
-        // Pause
-        seq.AppendInterval(0.3f);
+        seq.Append(spoonRect.DOMove(bowlCenter + new Vector3(1, 4, 0), 0.4f).SetEase(Ease.OutBack));
 
-        // Return Home
+        // Step B: Trigger the "Pouring" animation from your screenshot
+        seq.AppendCallback(() => 
+        {
+            if (spoonAnimator != null)
+            {
+                spoonAnimator.Play("Pouring");
+            }
+        });
+
+        // Step C: Wait for the animation to play (Adjust time based on your clip length)
+        seq.AppendInterval(1.0f); 
+
+        // Step D: Return Home
         seq.Append(spoonRect.DOMove(spoon.startPosition, 0.5f).SetEase(Ease.InOutQuad));
 
         seq.OnComplete(() => 

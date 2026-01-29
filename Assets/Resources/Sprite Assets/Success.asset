@@ -90,7 +90,7 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 15
       m_Height: 15
-      m_HorizontalBearingX: -7.5
+      m_HorizontalBearingX: -0.82
       m_HorizontalBearingY: 13
       m_HorizontalAdvance: 15
     m_GlyphRect:
@@ -103,5 +103,4 @@ MonoBehaviour:
     m_ClassDefinitionType: 0
     sprite: {fileID: -7692115157373309178, guid: b85ea71590ea58d41880a3cf6b93b2a7, type: 3}
   spriteInfoList: []
-  fallbackSpriteAssets:
-  - {fileID: 11400000, guid: 19d2f295c59ae4541b0c2ae8d4de2089, type: 2}
+  fallbackSpriteAssets: []
