@@ -24,7 +24,7 @@ public class MixAFix_Manager : MonoBehaviour
     private int collectedDropper = 0;
 
     [Header("UI Connections")]
-    //  public MixAFix_ProgressBar progressBar;
+    public MixAFix_SliderProgress sliderBar; // Drag the Slider object here
     public UnityEvent onDropToBowl;
 
     private void Awake()
@@ -34,35 +34,17 @@ public class MixAFix_Manager : MonoBehaviour
 
     private void Start()
     {
-        // Force Bowl to be a "Ghost" immediately on start
         SetBowlInteractable(false);
-
-        // Give UI a moment to initialize before loading level
         Invoke(nameof(StartFirstLevel), 0.1f);
     }
     
     public void SetBowlInteractable(bool state)
     {
-        if (bowl1CanvasGroup != null)
-        {
-            bowl1CanvasGroup.blocksRaycasts = state;
-        }
-        if (bowl2CanvasGroup != null)
-        {
-            bowl2CanvasGroup.blocksRaycasts = state;
-        }
-        if (bowl3CanvasGroup != null)
-        {
-            bowl3CanvasGroup.blocksRaycasts = state;
-        }
-        if (bowl4CanvasGroup != null)
-        {
-            bowl4CanvasGroup.blocksRaycasts = state;
-        }
-        if (bowl5CanvasGroup != null)
-        {
-            bowl5CanvasGroup.blocksRaycasts = state;
-        }
+        if (bowl1CanvasGroup != null) bowl1CanvasGroup.blocksRaycasts = state;
+        if (bowl2CanvasGroup != null) bowl2CanvasGroup.blocksRaycasts = state;
+        if (bowl3CanvasGroup != null) bowl3CanvasGroup.blocksRaycasts = state;
+        if (bowl4CanvasGroup != null) bowl4CanvasGroup.blocksRaycasts = state;
+        if (bowl5CanvasGroup != null) bowl5CanvasGroup.blocksRaycasts = state;
     }
 
     void StartFirstLevel() => LoadLevel(0);
@@ -79,19 +61,14 @@ public class MixAFix_Manager : MonoBehaviour
 
         currentData = levels[currentLevelIndex];
 
-        // Reset
+        // Reset local ingredients
         collectedPowder = 0;
         collectedPink = 0;
         collectedYellow = 0;
         collectedDropper = 0;
 
-        Debug.Log($"Load Level {index + 1}");
-        
-        // Update UI Text
         UpdateUI();
-        
-        // Update Bar to start position
-        //UpdateProgress(); 
+        UpdateProgress(); // Reset bar position for the start of the level
     }
 
     public bool DropScoops(string type)
@@ -101,81 +78,58 @@ public class MixAFix_Manager : MonoBehaviour
         switch (type)
         {
             case "Powder":
-                if (collectedPowder < currentData.requiredPowder) 
-                { 
-                    collectedPowder++; 
-                    isNeeded = true; 
-                }
+                if (collectedPowder < currentData.requiredPowder) { collectedPowder++; isNeeded = true; }
                 break;
             case "PinkCream":
-                if (collectedPink < currentData.requiredPinkCream) 
-                { 
-                    collectedPink++; 
-                    isNeeded = true; 
-                }
+                if (collectedPink < currentData.requiredPinkCream) { collectedPink++; isNeeded = true; }
                 break;
             case "YellowCream":
-                if (collectedYellow < currentData.requiredYellowCream) 
-                { 
-                    collectedYellow++; 
-                    isNeeded = true; 
-                }
+                if (collectedYellow < currentData.requiredYellowCream) { collectedYellow++; isNeeded = true; }
                 break;
             case "Dropper":
-                if (collectedDropper < currentData.requiredDrop)
-                {
-                    collectedDropper++;
-                    isNeeded = true; 
-                }
+                if (collectedDropper < currentData.requiredDrop) { collectedDropper++; isNeeded = true; }
                 break;
         }
 
         if (isNeeded)
         {
             if (onDropToBowl != null) onDropToBowl.Invoke();
-            
             MixAFix_LevelUI.Instance.ShowFeedback(true);
             
-            // UPDATE THE BAR AND CHECK WIN
-            //UpdateProgress();
-            
+            UpdateProgress(); // Update slider fill
             CheckLevelCompletion();
             UpdateUI();
             return true;
         }
         else
         {
-            Debug.Log("❌ Ingredient not needed!");
             MixAFix_LevelUI.Instance.ShowFeedback(false);
             return false;
         }
     }
 
-    /*
-    // --- NEW: PROGRESS BAR MATH ---
     private void UpdateProgress()
     {
-        if (progressBar == null) return;
+        if (sliderBar == null || currentData == null) return;
 
         // 1. Calculate total items needed for THIS level
         int totalNeeded = currentData.requiredPowder + currentData.requiredPinkCream + 
                           currentData.requiredYellowCream + currentData.requiredDrop;
         
-        // 2. Calculate total collected
+        // 2. Calculate total collected currently
         int totalCollected = collectedPowder + collectedPink + collectedYellow + collectedDropper;
 
-        // 3. Math to fill bar (assuming 5 levels total = 0.2 chunk per level)
-        float levelProgress = (float)totalCollected / totalNeeded;
-        float levelChunk = 1.0f / 5.0f; 
+        // 3. Math for 5 Levels
+        // How much of the current 20% chunk is filled?
+        float levelProgress = totalNeeded > 0 ? (float)totalCollected / totalNeeded : 0;
+        
+        float levelChunk = 1.0f / 5.0f; // Each level is 0.2 of the bar
         float baseProgress = currentLevelIndex * levelChunk;
         
         float finalFillAmount = baseProgress + (levelProgress * levelChunk);
 
-        progressBar.UpdateBar(finalFillAmount);
+        sliderBar.UpdateBar(finalFillAmount);
     }
-
-    */
-    
     
     private void UpdateUI()
     {
@@ -196,11 +150,6 @@ public class MixAFix_Manager : MonoBehaviour
 
         if (pDone && piDone && yDone && dDone)
         {
-            Debug.Log("Level Complete");
-            
-            // Unlock Star
-            //if (progressBar != null) progressBar.UnlockStar(currentLevelIndex);
-
             MixAFix_LevelUI.Instance.ShowLevelComplete(currentLevelIndex + 1);
         }
     }

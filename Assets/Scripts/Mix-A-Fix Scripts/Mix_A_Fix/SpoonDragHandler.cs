@@ -4,11 +4,27 @@ using DG.Tweening;
 
 public class SpoonDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    
+    // Inside SpoonDragHandler.cs
+    private Animator animator;
+
+// Create a public method that other scripts can call
+    public void PlayPourAnimation()
+    {
+        if (animator != null)
+        {
+            animator.Play("Pouring");
+        }
+    }
+    
     [Header("Settings")]
     public string ingredientType; 
 
     [HideInInspector] public Vector3 startPosition;
     [HideInInspector] public bool placed = false;
+    
+    public Animator spoonAnimator;
+    public string spoonAnimationType;
 
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
@@ -19,6 +35,13 @@ public class SpoonDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 
 private void Awake()
     {
+        rectTransform = GetComponent<RectTransform>();
+        canvasGroup = GetComponent<CanvasGroup>() ?? gameObject.AddComponent<CanvasGroup>();
+        originalScale = transform.localScale;
+    
+        // Cache the animator reference here
+        animator = GetComponent<Animator>();
+        
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>() ?? gameObject.AddComponent<CanvasGroup>();
         originalScale = transform.localScale;
@@ -94,6 +117,16 @@ private void Awake()
     
     public void ResetVisuals()
     {
+        transform.DOKill();
+        transform.localScale = originalScale;
+        transform.SetSiblingIndex(defaultSiblingIndex);
+    
+        // Ensure the animator goes back to Idle/Normal when reset
+        if (animator != null)
+        {
+            animator.Play("Idle"); // Or whatever your default state is named
+        }
+        
         transform.DOKill();
         transform.localScale = originalScale;
         transform.SetSiblingIndex(defaultSiblingIndex);
