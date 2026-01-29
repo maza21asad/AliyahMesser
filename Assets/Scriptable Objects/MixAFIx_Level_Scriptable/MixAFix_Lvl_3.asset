@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MixAFix_Lvl_3
   m_EditorClassIdentifier: Assembly-CSharp::MixAFix_LevelData
   requiredPowder: 2
-  requiredPinkCream: 3
+  requiredPinkCream: 2
   requiredYellowCream: 2
   requiredDrop: 1

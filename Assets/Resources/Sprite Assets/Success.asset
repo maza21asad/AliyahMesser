@@ -1,13 +1,13 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!21 &-7326376464289793823
+--- !u!21 &-8444840381731346612
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Empty Material
+  m_Name: Success Material
   m_Shader: {fileID: 4800000, guid: cf81c85f95fe47e1a27f6ae460cf182c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -24,7 +24,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f83966b5c2480fb45b3f872686fa73c8, type: 3}
+        m_Texture: {fileID: 2800000, guid: b85ea71590ea58d41880a3cf6b93b2a7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84a92b25f83d49b9bc132d206b370281, type: 3}
-  m_Name: Empty
+  m_Name: Success
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_SpriteAsset
   m_Version: 1.1.0
   m_FaceInfo:
@@ -77,21 +77,21 @@ MonoBehaviour:
     m_StrikethroughOffset: 0
     m_StrikethroughThickness: 0
     m_TabWidth: 0
-  m_Material: {fileID: -7326376464289793823}
-  spriteSheet: {fileID: 2800000, guid: f83966b5c2480fb45b3f872686fa73c8, type: 3}
+  m_Material: {fileID: -8444840381731346612}
+  spriteSheet: {fileID: 2800000, guid: b85ea71590ea58d41880a3cf6b93b2a7, type: 3}
   m_SpriteCharacterTable:
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 0
     m_Scale: 1
-    m_Name: UnTick_0
+    m_Name: Tick_0
   m_GlyphTable:
   - m_Index: 0
     m_Metrics:
       m_Width: 15
       m_Height: 15
       m_HorizontalBearingX: -7.5
-      m_HorizontalBearingY: 7.5
+      m_HorizontalBearingY: 13
       m_HorizontalAdvance: 15
     m_GlyphRect:
       m_X: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
-    sprite: {fileID: 3858521286943839914, guid: f83966b5c2480fb45b3f872686fa73c8, type: 3}
+    sprite: {fileID: -7692115157373309178, guid: b85ea71590ea58d41880a3cf6b93b2a7, type: 3}
   spriteInfoList: []
-  fallbackSpriteAssets: []
+  fallbackSpriteAssets:
+  - {fileID: 11400000, guid: 19d2f295c59ae4541b0c2ae8d4de2089, type: 2}

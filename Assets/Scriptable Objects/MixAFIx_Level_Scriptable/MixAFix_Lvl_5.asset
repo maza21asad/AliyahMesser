@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7554b73ff17a4482b4da64145d4c8bfd, type: 3}
   m_Name: MixAFix_Lvl_5
   m_EditorClassIdentifier: Assembly-CSharp::MixAFix_LevelData
-  requiredPowder: 5
-  requiredPinkCream: 5
-  requiredYellowCream: 4
-  requiredDrop: 3
+  requiredPowder: 4
+  requiredPinkCream: 4
+  requiredYellowCream: 3
+  requiredDrop: 2
