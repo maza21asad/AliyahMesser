@@ -42,7 +42,7 @@ public class BowlDropArea : MonoBehaviour, IDropHandler
         });
     
         // Step 3: Wait and return
-        seq.AppendInterval(0.6f);
+        seq.AppendInterval(1.0f);
         seq.Append(spoonRect.DOMove(spoon.startPosition, 0.5f).SetEase(Ease.InOutQuad));
 
         seq.OnComplete(() => 

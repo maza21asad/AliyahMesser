@@ -13,7 +13,7 @@ public class SpoonDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, 
     {
         if (animator != null)
         {
-            animator.Play("Pouring");
+            animator.Play("Pouring", -1, 0f);
         }
     }
     
