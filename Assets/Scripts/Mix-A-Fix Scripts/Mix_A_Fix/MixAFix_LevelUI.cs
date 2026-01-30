@@ -36,6 +36,9 @@ public class MixAFix_LevelUI : MonoBehaviour
 
     private bool waitForPlayerTouch = false;
     private Tween tapBlinkTween;
+    
+    [Header("Star System")]
+    public RectTransform[] stars; // Assign your 5 Star Image transforms here
 
     private void Awake()
     {
@@ -50,6 +53,37 @@ public class MixAFix_LevelUI : MonoBehaviour
     private void Update()
     {
         HandleTouch();
+    }
+    
+    private void Start()
+    {
+        // Ensure all stars are invisible at the very start of the game
+        if (stars != null)
+        {
+            foreach (RectTransform star in stars)
+            {
+                if (star != null) star.localScale = Vector3.zero;
+            }
+        }
+    }
+
+    public void AnimateStar(int levelIndex)
+    {
+        // Level 1 = Index 0, Level 2 = Index 1, etc.
+        int starIndex = levelIndex - 1;
+
+        if (stars != null && starIndex >= 0 && starIndex < stars.Length)
+        {
+            RectTransform targetStar = stars[starIndex];
+        
+            // Kill any existing tweens to prevent conflicts
+            targetStar.DOKill();
+        
+            // Pop-up Animation: Scale from 0 to 1.2 for a "bounce" then settle at 1.0
+            targetStar.DOScale(1.2f, 0.5f).SetEase(Ease.OutBack).OnComplete(() => {
+                targetStar.DOScale(1.0f, 0.2f);
+            });
+        }
     }
 
     public void UpdateIngredients(int pCur, int pReq, int piCur, int piReq, int yCur, int yReq, int dCur, int dReq)

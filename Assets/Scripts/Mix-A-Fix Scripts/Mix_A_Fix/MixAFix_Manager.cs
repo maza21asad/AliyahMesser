@@ -154,7 +154,16 @@ public class MixAFix_Manager : MonoBehaviour
 
         if (pDone && piDone && yDone && dDone)
         {
-            MixAFix_LevelUI.Instance.ShowLevelComplete(currentLevelIndex + 1);
+            int finishedLevel = currentLevelIndex + 1; // Converts index 0 to Level 1
+        
+            // 1. Trigger the Star Pop-up
+            if (MixAFix_LevelUI.Instance != null)
+            {
+                MixAFix_LevelUI.Instance.AnimateStar(finishedLevel);
+            }
+
+            // 2. Show the existing completion UI and animations
+            MixAFix_LevelUI.Instance.ShowLevelComplete(finishedLevel);
             MixAFix_DollController.Instance.PlayHappyDance();
         }
     }
