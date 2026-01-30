@@ -39,6 +39,8 @@ public class MixAFix_Manager : MonoBehaviour
     {
         SetBowlInteractable(false);
         Invoke(nameof(StartFirstLevel), 0.1f);
+
+        SoundManager.PlayMusic(SoundType.MixAFixMusic, 1f);
     }
     
     public void SetBowlInteractable(bool state)

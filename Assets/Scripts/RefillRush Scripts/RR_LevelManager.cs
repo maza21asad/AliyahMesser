@@ -26,6 +26,8 @@ public class RR_LevelManager : MonoBehaviour
     {
         LoadLevel(0);
         PlayIdle();
+
+        SoundManager.PlayMusic(SoundType.RefillRushMusic, 1f);
     }
 
     public void LoadLevel(int index)

@@ -38,6 +38,8 @@ public class PillFill_LevelManager : MonoBehaviour
     private void Start()
     {
         LoadLevel(0);
+
+        SoundManager.PlayMusic(SoundType.PillFillMusic, 1f);
     }
 
     public void LoadLevel(int index)

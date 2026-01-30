@@ -28,6 +28,12 @@ public class MenuManager : MonoBehaviour
         ShowPanel(mainMenuPanel);
     }
 
+    private void Start()
+    {
+        SoundManager.PlayMusic(SoundType.MainMenuMusic, 1f);
+    }
+
+
     public void ShowPanel(GameObject panelToShow)
     {
        foreach (GameObject panel in allPanels)
