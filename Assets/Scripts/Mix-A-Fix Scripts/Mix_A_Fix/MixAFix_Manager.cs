@@ -155,6 +155,7 @@ public class MixAFix_Manager : MonoBehaviour
         if (pDone && piDone && yDone && dDone)
         {
             MixAFix_LevelUI.Instance.ShowLevelComplete(currentLevelIndex + 1);
+            MixAFix_DollController.Instance.PlayHappyDance();
         }
     }
 

@@ -10,17 +10,29 @@ public class BowlDropArea : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag == null) return;
-        
+    
         SpoonDragHandler spoon = eventData.pointerDrag.GetComponent<SpoonDragHandler>();
-        
+    
         if (spoon != null && manager != null)
         {
+            // 1. Check with Manager
             bool wasAccepted = manager.DropScoops(spoon.ingredientType);
 
             if (wasAccepted)
             {
                 spoon.placed = true;
                 AnimateDropAndReturn(spoon);
+                if (MixAFix_DollController.Instance != null)
+                    MixAFix_DollController.Instance.PlaySuccess();
+            }
+            else
+            {
+                // 2. WRONG INGREDIENT: Play Doll reaction and Spoon Error
+                MixAFix_LevelUI.Instance.ShowFeedback(false);
+            
+                
+                if (MixAFix_DollController.Instance != null)
+                    MixAFix_DollController.Instance.PlaySad();
             }
         }
     }
