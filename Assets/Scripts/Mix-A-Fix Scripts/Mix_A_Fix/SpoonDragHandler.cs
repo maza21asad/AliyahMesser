@@ -120,18 +120,14 @@ private void Awake()
     {
         transform.DOKill();
         transform.localScale = originalScale;
-        transform.SetSiblingIndex(defaultSiblingIndex);
+        transform.localRotation = Quaternion.identity; // Ensures it's not tilted on the shelf
+        transform.SetSiblingIndex(defaultSiblingIndex); //
 
         if (animator != null)
         {
-            // Force the animation back to the very first frame and stop it
-            animator.Play("Pouring", -1, 0f);
-        
-            // Use Update(0) to force the sprite to refresh to that first frame immediately
-            animator.Update(0); 
-        
-            // Disable so it doesn't play automatically next time
-            animator.enabled = false; 
+            animator.Play("Pouring", -1, 0f); //
+            animator.Update(0); //
+            animator.enabled = false; //
         }
     }
 }
