@@ -9,6 +9,8 @@ public class PillFill_LevelUI : MonoBehaviour
 
     [Header("Feedback")]
     public TextMeshProUGUI feedbackText;
+    public Color correctColor = new Color(0.2f, 0.8f, 0.3f);
+    public Color wrongColor = new Color(0.9f, 0.2f, 0.2f);
 
     string[] goodMsgs = { "Great!", "Nice!", "Perfect!", "Good Job!" };
     string[] badMsgs = { "No!", "Drop pill!", "Not that!", "Try again!" };
@@ -55,6 +57,7 @@ public class PillFill_LevelUI : MonoBehaviour
         string msg = isCorrect
             ? goodMsgs[Random.Range(0, goodMsgs.Length)]
             : badMsgs[Random.Range(0, badMsgs.Length)];
+        feedbackText.color = isCorrect ? correctColor : wrongColor;
 
         StartCoroutine(ShowFeedbackRoutine(msg));
     }
