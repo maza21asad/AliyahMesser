@@ -74,7 +74,6 @@ public class MixAFix_Manager : MonoBehaviour
     public bool DropScoops(string type)
     {
         bool isNeeded = false;
-
         switch (type)
         {
             case "Powder":
@@ -93,12 +92,8 @@ public class MixAFix_Manager : MonoBehaviour
 
         if (isNeeded)
         {
-            if (onDropToBowl != null) onDropToBowl.Invoke();
             MixAFix_LevelUI.Instance.ShowFeedback(true);
-            
-            UpdateProgress(); // Update slider fill
-            CheckLevelCompletion();
-            UpdateUI();
+            UpdateUI(); // Updates the text checklist immediately
             return true;
         }
         else
@@ -106,8 +101,17 @@ public class MixAFix_Manager : MonoBehaviour
             MixAFix_LevelUI.Instance.ShowFeedback(false);
             return false;
         }
+        return false;
     }
 
+    public void ProcessAcceptedScoop()
+    {
+        if (onDropToBowl != null) onDropToBowl.Invoke();
+
+        UpdateProgress();
+        CheckLevelCompletion(); // Checks if level is done
+    }
+    
     private void UpdateProgress()
     {
         if (sliderBar == null || currentData == null) return;

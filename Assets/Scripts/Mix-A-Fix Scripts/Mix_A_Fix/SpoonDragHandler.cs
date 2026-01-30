@@ -13,7 +13,8 @@ public class SpoonDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, 
     {
         if (animator != null)
         {
-            animator.Play("Pouring", -1, 0f);
+            animator.enabled = true;
+            animator.Play("Pouring", -1, 0f); 
         }
     }
     
@@ -114,21 +115,23 @@ private void Awake()
             transform.DOScale(originalScale, 0.2f);
         }
     }
-    
+
     public void ResetVisuals()
     {
         transform.DOKill();
         transform.localScale = originalScale;
         transform.SetSiblingIndex(defaultSiblingIndex);
-    
-        // Ensure the animator goes back to Idle/Normal when reset
+
         if (animator != null)
         {
-            animator.Play("Idle"); // Or whatever your default state is named
-        }
+            // Force the animation back to the very first frame and stop it
+            animator.Play("Pouring", -1, 0f);
         
-        transform.DOKill();
-        transform.localScale = originalScale;
-        transform.SetSiblingIndex(defaultSiblingIndex);
+            // Use Update(0) to force the sprite to refresh to that first frame immediately
+            animator.Update(0); 
+        
+            // Disable so it doesn't play automatically next time
+            animator.enabled = false; 
+        }
     }
 }
