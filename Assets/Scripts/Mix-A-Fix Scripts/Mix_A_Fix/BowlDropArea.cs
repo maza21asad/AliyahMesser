@@ -8,10 +8,14 @@ public class BowlDropArea : MonoBehaviour, IDropHandler
     public MixAFix_Manager manager;
 
     public void OnDrop(PointerEventData eventData)
-{
-    if (eventData.pointerDrag == null) return;
+    {
+        if (eventData.pointerDrag == null) return;
+    
+        // NEW: Check if we are already busy animating a previous spoon
+        if (manager != null && !manager.CanAcceptScoop()) 
+            return;
 
-    SpoonDragHandler spoon = eventData.pointerDrag.GetComponent<SpoonDragHandler>();
+        SpoonDragHandler spoon = eventData.pointerDrag.GetComponent<SpoonDragHandler>();
 
     if (spoon != null && manager != null)
     {
@@ -61,13 +65,13 @@ private void AnimateErrorShake(SpoonDragHandler spoon)
     // Step 4: NOW return to the default location
     errorSeq.Append(spoonRect.DOMove(spoon.startPosition, 0.5f).SetEase(Ease.InOutQuad));
 
-    errorSeq.OnComplete(() => 
-    {
-        // Reset the flag and visuals so the spoon can be dragged again
-        spoon.placed = false; 
-        spoon.ResetVisuals(); 
-    });
-}
+        errorSeq.OnComplete(() => 
+        {
+            // Reset the flag and visuals so the spoon can be dragged again
+            spoon.placed = false; 
+            spoon.ResetVisuals(); 
+        });
+    }
 
     private void AnimateDropAndReturn(SpoonDragHandler spoon)
     {
@@ -93,12 +97,13 @@ private void AnimateErrorShake(SpoonDragHandler spoon)
         seq.OnComplete(() => 
         {
             spoon.placed = false;
-            spoon.ResetVisuals(); // Resets animator/sprite
+            spoon.ResetVisuals(); 
 
-            // NEW: Now that the spoon is home, update the progress bar and check for win
             if (manager != null)
             {
                 manager.ProcessAcceptedScoop();
+                // UNLOCK the manager so the next spoon can be dropped
+                manager.isProcessingScoop = false; 
             }
         });
     }

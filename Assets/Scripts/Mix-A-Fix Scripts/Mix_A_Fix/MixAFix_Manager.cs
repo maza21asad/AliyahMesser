@@ -26,6 +26,9 @@ public class MixAFix_Manager : MonoBehaviour
     [Header("UI Connections")]
     public MixAFix_SliderProgress sliderBar; // Drag the Slider object here
     public UnityEvent onDropToBowl;
+    
+    [Header("State")]
+    public bool isProcessingScoop = false; // NEW: Lock flag
 
     private void Awake()
     {
@@ -70,6 +73,12 @@ public class MixAFix_Manager : MonoBehaviour
         UpdateUI();
         UpdateProgress(); // Reset bar position for the start of the level
     }
+    
+    
+    public bool CanAcceptScoop()
+    {
+        return !isProcessingScoop;
+    }
 
     public bool DropScoops(string type)
     {
@@ -106,10 +115,11 @@ public class MixAFix_Manager : MonoBehaviour
 
     public void ProcessAcceptedScoop()
     {
-        if (onDropToBowl != null) onDropToBowl.Invoke();
+        // REMOVE THIS LINE to prevent accidental triggers from the Inspector
+        // if (onDropToBowl != null) onDropToBowl.Invoke();
 
         UpdateProgress();
-        CheckLevelCompletion(); // Checks if level is done
+        CheckLevelCompletion(); 
     }
     
     private void UpdateProgress()
