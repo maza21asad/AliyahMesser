@@ -63,6 +63,8 @@ private void Awake()
         }
 
         // ... (Standard Drag Logic) ...
+        SoundManager.PlaySFX(SoundType.OnDragBegin); // Play OnDragBegin
+        
         transform.DOKill();
         placed = false;
         
@@ -101,6 +103,7 @@ private void Awake()
 
         if (!placed)
         {
+            SoundManager.PlaySFX(SoundType.OnDragEnd); // Play OnDragEnd
             // Return logic
             rectTransform.DOMove(startPosition, 0.3f).SetEase(Ease.OutQuad)
                 .OnComplete(() => 

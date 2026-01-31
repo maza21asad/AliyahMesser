@@ -11,7 +11,12 @@ public enum SoundType
     // SFX
     YesSound,
     NoSound,
+    OnPouring,
+    OnReturning,
+    OnDragBegin,
+    OnDragEnd,
     LevelComplete,
+    Congratulations
 }
 
 //[RequireComponent(typeof(AudioSource))]

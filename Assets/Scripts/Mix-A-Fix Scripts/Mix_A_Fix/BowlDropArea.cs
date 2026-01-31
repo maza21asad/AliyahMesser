@@ -24,6 +24,8 @@ public class BowlDropArea : MonoBehaviour, IDropHandler
         if (wasAccepted)
         {
             spoon.placed = true;
+            SoundManager.PlaySFX(SoundType.YesSound);
+            
             AnimateDropAndReturn(spoon);
             if (MixAFix_DollController.Instance != null)
                 MixAFix_DollController.Instance.PlaySuccess();
@@ -62,8 +64,14 @@ private void AnimateErrorShake(SpoonDragHandler spoon)
     // Step 3: Pause briefly so the player sees the "No" gesture
     //errorSeq.AppendInterval(0.2f);
 
-    // Step 4: NOW return to the default location
-    errorSeq.Append(spoonRect.DOMove(spoon.startPosition, 0.5f).SetEase(Ease.InOutQuad));
+    // Play Wrong Sound immediately on error
+    SoundManager.PlaySFX(SoundType.NoSound); 
+    
+    // Shake logic ...
+    errorSeq.Append(spoonRect.DOMove(spoon.startPosition, 0.5f).SetEase(Ease.InOutQuad)
+        .OnStart(() => {
+            SoundManager.PlaySFX(SoundType.OnReturning); // Play OnReturning
+        }));
 
         errorSeq.OnComplete(() => 
         {
@@ -83,16 +91,18 @@ private void AnimateErrorShake(SpoonDragHandler spoon)
         // Step 1: Move to bowl
         seq.Append(spoonRect.DOMove(bowlCenter + new Vector3(1, 6, 0), 0.4f).SetEase(Ease.OutBack));
     
-        // Step 2: Play animation
         seq.AppendCallback(() => {
             spoon.PlayPourAnimation(); 
+            SoundManager.PlaySFX(SoundType.OnPouring); // Play OnPouring
         });
-    
-        // Step 3: Wait for pouring to finish
-        seq.AppendInterval(1.0f);
 
+        seq.AppendInterval(1.0f);
+    
         // Step 4: Return Home
-        seq.Append(spoonRect.DOMove(spoon.startPosition, 0.5f).SetEase(Ease.InOutQuad));
+        seq.Append(spoonRect.DOMove(spoon.startPosition, 0.5f).SetEase(Ease.InOutQuad)
+            .OnStart(() => {
+                SoundManager.PlaySFX(SoundType.OnReturning); // Play OnReturning
+            }));
 
         seq.OnComplete(() => 
         {

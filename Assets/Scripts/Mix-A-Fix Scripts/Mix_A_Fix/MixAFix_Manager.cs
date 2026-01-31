@@ -168,6 +168,8 @@ public class MixAFix_Manager : MonoBehaviour
         {
             int finishedLevel = currentLevelIndex + 1; // Converts index 0 to Level 1
         
+            SoundManager.PlaySFX(SoundType.LevelComplete);
+            
             // 1. Trigger the Star Pop-up
             if (MixAFix_LevelUI.Instance != null)
             {
