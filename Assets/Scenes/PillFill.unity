@@ -2557,6 +2557,7 @@ GameObject:
   - component: {fileID: 1154093566}
   - component: {fileID: 1154093568}
   - component: {fileID: 1154093567}
+  - component: {fileID: 1154093569}
   m_Layer: 5
   m_Name: SettingsPanel
   m_TagString: Untagged
@@ -2629,6 +2630,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154093565}
   m_CullTransparentMesh: 1
+--- !u!114 &1154093569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154093565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1aa6550286706041a8477b0187af35c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SettingsUI
+  musicSlider: {fileID: 2049240814}
+  sfxSlider: {fileID: 1853744668}
 --- !u!1 &1162537811
 GameObject:
   m_ObjectHideFlags: 0

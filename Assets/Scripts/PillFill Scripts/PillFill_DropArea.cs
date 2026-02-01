@@ -29,6 +29,8 @@ public class PillFill_DropArea : MonoBehaviour, IDropHandler
             PillFill_LevelUI.Instance.ShowFeedback(false);  // <-- BAD
             dropped.placed = false;
             PillFill_LevelManager.Instance.PlayCowNo();
+
+            SoundManager.instance.PlaySFX("NoSound");
         }
 
     }

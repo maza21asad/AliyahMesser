@@ -92,20 +92,20 @@ public class PillFill_DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler,
     }
 
     // --- Called from your DropBox script when entered and exited ----
-    public void OnHoverEnter()
-    {
-        // Glow effect or scale effect
-        if (hoverTween != null) hoverTween.Kill();
+    //public void OnHoverEnter()
+    //{
+    //    // Glow effect or scale effect
+    //    if (hoverTween != null) hoverTween.Kill();
 
-        hoverTween = transform.DOScale(originalScale * 1.15f, 0.2f)
-                              .SetEase(Ease.OutBack);
-    }
+    //    hoverTween = transform.DOScale(originalScale * 1.15f, 0.2f)
+    //                          .SetEase(Ease.OutBack);
+    //}
 
-    public void OnHoverExit()
-    {
-        if (hoverTween != null) hoverTween.Kill();
+    //public void OnHoverExit()
+    //{
+    //    if (hoverTween != null) hoverTween.Kill();
 
-        hoverTween = transform.DOScale(originalScale, 0.2f)
-                              .SetEase(Ease.OutQuad);
-    }
+    //    hoverTween = transform.DOScale(originalScale, 0.2f)
+    //                          .SetEase(Ease.OutQuad);
+    //}
 }
