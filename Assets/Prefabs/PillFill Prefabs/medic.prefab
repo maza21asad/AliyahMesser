@@ -254,5 +254,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemCategory: '"medic"'
+  glow: {fileID: 6643314917409059137}
   startPosition: {x: 0, y: 0, z: 0}
   placed: 0

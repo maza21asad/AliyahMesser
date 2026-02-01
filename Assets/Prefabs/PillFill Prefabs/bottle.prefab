@@ -179,6 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemCategory: '"bottle"'
+  glow: {fileID: 5610682802746687419}
   startPosition: {x: 0, y: 0, z: 0}
   placed: 0
 --- !u!1 &8912361140556342886

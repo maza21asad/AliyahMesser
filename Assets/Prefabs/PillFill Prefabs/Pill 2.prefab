@@ -254,5 +254,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemCategory: '"pill"'
+  glow: {fileID: 4023328632677762798}
   startPosition: {x: 0, y: 0, z: 0}
   placed: 0

@@ -179,6 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemCategory: '"bandage"'
+  glow: {fileID: 6738974611987226464}
   startPosition: {x: 0, y: 0, z: 0}
   placed: 0
 --- !u!1 &6738974611987226464

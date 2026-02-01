@@ -6,6 +6,8 @@ public class PillFill_DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler,
 {
     public string itemCategory;
 
+    public GameObject glow;
+
     [HideInInspector] public Vector3 startPosition;
     [HideInInspector] public bool placed = false;
 
@@ -16,12 +18,18 @@ public class PillFill_DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler,
     private Vector3 originalScale;
     private Tween hoverTween;
 
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>() ?? gameObject.AddComponent<CanvasGroup>();
 
         originalScale = transform.localScale;
+    }
+
+    private void Start()
+    {
+        glow.SetActive(false);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -34,6 +42,10 @@ public class PillFill_DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler,
 
         // Small pickup scale animation
         transform.DOScale(originalScale * 1.12f, 0.18f).SetEase(Ease.OutBack);
+
+        glow.SetActive(true);
+
+        SoundManager.instance.PlaySFX("OnDragBegin");
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -53,11 +65,17 @@ public class PillFill_DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler,
     {
         canvasGroup.blocksRaycasts = true;
 
+        glow.SetActive(false);
+
+        //SoundManager.instance.PlaySFX("OnDragEnd");
+
         if (!placed)
         {
             // Not placed → return smoothly
             rectTransform.DOMove(startPosition, 0.25f).SetEase(Ease.OutQuad);
             transform.DOScale(originalScale, 0.15f);
+
+            SoundManager.instance.PlaySFX("OnDragEnd");
         }
         else
         {
@@ -68,6 +86,8 @@ public class PillFill_DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler,
                     {
                         transform.DOScale(originalScale, 0.15f);
                     });
+
+            SoundManager.instance.PlaySFX("YesSound");
         }
     }
 
