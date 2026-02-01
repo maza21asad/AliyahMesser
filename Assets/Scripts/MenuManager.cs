@@ -30,7 +30,8 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
-        SoundManager.PlayMusic(SoundType.MainMenuMusic, 1f);
+        //SoundManager.PlayMusic(MusicType.MainMenuMusic, 1f);
+        SoundManager.instance.PlayMusic("MainMenuMusic");
     }
 
 
@@ -61,5 +62,3 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 }
-
-//hello

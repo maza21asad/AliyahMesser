@@ -1530,14 +1530,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9055aec75c7393349b105f5331c218a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
-  soundList:
-  - {fileID: 8300000, guid: c481e9a44fcb3a54b9d94e6dce6c4715, type: 3}
-  - {fileID: 8300000, guid: 698c0efe818a10c438f3879336b6c9a1, type: 3}
-  - {fileID: 8300000, guid: c481e9a44fcb3a54b9d94e6dce6c4715, type: 3}
-  - {fileID: 8300000, guid: 698c0efe818a10c438f3879336b6c9a1, type: 3}
-  - {fileID: 8300000, guid: 092c77acad89f6443bcebb2f3f9b4e1b, type: 3}
-  - {fileID: 8300000, guid: 092c77acad89f6443bcebb2f3f9b4e1b, type: 3}
-  - {fileID: 8300000, guid: e41794d63e5d07d48aca66a7270fe9f5, type: 3}
+  musicClips:
+  - name: MainMenuMusic
+    clip: {fileID: 8300000, guid: c481e9a44fcb3a54b9d94e6dce6c4715, type: 3}
+  - name: PillFillMusic
+    clip: {fileID: 8300000, guid: 698c0efe818a10c438f3879336b6c9a1, type: 3}
+  - name: MixAFixMusic
+    clip: {fileID: 8300000, guid: 698c0efe818a10c438f3879336b6c9a1, type: 3}
+  - name: RefillRushMusic
+    clip: {fileID: 8300000, guid: 698c0efe818a10c438f3879336b6c9a1, type: 3}
+  sfxClips:
+  - name: YesSound
+    clip: {fileID: 8300000, guid: 8138884cf50e4f34eb7f8750068cc1f7, type: 3}
+  - name: NoSound
+    clip: {fileID: 8300000, guid: b7358e5cb4653454da2422ac8104e010, type: 3}
+  - name: OnPouring
+    clip: {fileID: 8300000, guid: c7de8cf643635134aa498096ceb9ac34, type: 3}
+  - name: OnReturning
+    clip: {fileID: 8300000, guid: 01fbcdba406853c4d85e4a8f45317754, type: 3}
+  - name: OnDragBegin
+    clip: {fileID: 8300000, guid: 806a8195547e5d34f8b837e1145ba117, type: 3}
+  - name: OnDragEnd
+    clip: {fileID: 8300000, guid: 806a8195547e5d34f8b837e1145ba117, type: 3}
+  - name: LevelComplete
+    clip: {fileID: 8300000, guid: 8138884cf50e4f34eb7f8750068cc1f7, type: 3}
+  - name: Congratulations
+    clip: {fileID: 8300000, guid: 8e8976a323364944e907778ba9199716, type: 3}
   musicSource: {fileID: 669720310}
   sfxSource: {fileID: 669720312}
 --- !u!82 &669720310

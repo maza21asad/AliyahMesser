@@ -48,7 +48,7 @@ public class PillFill_LevelUI : MonoBehaviour
     public void UpdatePillInstruction(int required)
     {
         //pillInstructionText.text = $"Please collect {required} pills";
-        pillInstructionText.text = required == 1 ? "Collect 1 pill for Bunny" : $"Collect {required} pills for Bunny";
+        pillInstructionText.text = required == 1 ? "Collect 1 pill in the bottle" : $"Collect {required} pills in the bottle";
     }
 
 
@@ -79,28 +79,6 @@ public class PillFill_LevelUI : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         feedbackText.gameObject.SetActive(false);
     }
-
-    //public void ShowLevelComplete(int level)
-    //{
-    //    levelCompleteUI.SetActive(true);
-    //    Transform panel = levelCompleteUI.transform;
-
-    //    panel.localScale = Vector3.zero;
-    //    levelCompleteMessage.text = $"Dose {level}\nComplete!";
-
-    //    Sequence seq = DOTween.Sequence();
-
-    //    seq.AppendInterval(1f);
-    //    seq.Append(panel.DOScale(1f, 0.45f).SetEase(Ease.OutBack));
-    //    seq.AppendInterval(1.5f);
-    //    seq.Append(panel.DOScale(0f, 0.35f).SetEase(Ease.InBack));
-
-    //    seq.OnComplete(() =>
-    //    {
-    //        levelCompleteUI.SetActive(false);
-    //        PillFill_LevelManager.Instance.LoadNextLevel();
-    //    });
-    //}
 
     public void ShowLevelComplete(int level)
     {

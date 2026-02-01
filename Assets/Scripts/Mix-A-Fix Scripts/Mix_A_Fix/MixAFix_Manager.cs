@@ -40,7 +40,8 @@ public class MixAFix_Manager : MonoBehaviour
         SetBowlInteractable(false);
         Invoke(nameof(StartFirstLevel), 0.1f);
 
-        SoundManager.PlayMusic(SoundType.MixAFixMusic, 1f);
+        //SoundManager.PlayMusic(MusicType.MixAFixMusic, 1f);
+        SoundManager.instance.PlayMusic("MixAFixMusic");
     }
     
     public void SetBowlInteractable(bool state)
@@ -112,7 +113,7 @@ public class MixAFix_Manager : MonoBehaviour
             MixAFix_LevelUI.Instance.ShowFeedback(false);
             return false;
         }
-        return false;
+        //return false;
     }
 
     public void ProcessAcceptedScoop()
@@ -167,9 +168,10 @@ public class MixAFix_Manager : MonoBehaviour
         if (pDone && piDone && yDone && dDone)
         {
             int finishedLevel = currentLevelIndex + 1; // Converts index 0 to Level 1
-        
-            SoundManager.PlaySFX(SoundType.LevelComplete);
-            
+
+            //SoundManager.PlaySFX(SFXType.LevelComplete);
+            SoundManager.instance.PlaySFX("LevelComplete");
+
             // 1. Trigger the Star Pop-up
             if (MixAFix_LevelUI.Instance != null)
             {

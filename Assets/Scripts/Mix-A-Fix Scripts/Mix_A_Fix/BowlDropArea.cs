@@ -24,9 +24,10 @@ public class BowlDropArea : MonoBehaviour, IDropHandler
         if (wasAccepted)
         {
             spoon.placed = true;
-            SoundManager.PlaySFX(SoundType.YesSound);
-            
-            AnimateDropAndReturn(spoon);
+            //SoundManager.PlaySFX(SFXType.YesSound);
+            SoundManager.instance.PlaySFX("YesSound");
+
+                AnimateDropAndReturn(spoon);
             if (MixAFix_DollController.Instance != null)
                 MixAFix_DollController.Instance.PlaySuccess();
         }
@@ -65,12 +66,14 @@ private void AnimateErrorShake(SpoonDragHandler spoon)
     //errorSeq.AppendInterval(0.2f);
 
     // Play Wrong Sound immediately on error
-    SoundManager.PlaySFX(SoundType.NoSound); 
-    
-    // Shake logic ...
-    errorSeq.Append(spoonRect.DOMove(spoon.startPosition, 0.5f).SetEase(Ease.InOutQuad)
+    //SoundManager.PlaySFX(SFXType.NoSound); 
+    SoundManager.instance.PlaySFX("NoSound");
+
+        // Shake logic ...
+        errorSeq.Append(spoonRect.DOMove(spoon.startPosition, 0.5f).SetEase(Ease.InOutQuad)
         .OnStart(() => {
-            SoundManager.PlaySFX(SoundType.OnReturning); // Play OnReturning
+            //SoundManager.PlaySFX(SFXType.OnReturning); // Play OnReturning
+            SoundManager.instance.PlaySFX("OnReturning"); // Play OnReturning
         }));
 
         errorSeq.OnComplete(() => 
@@ -93,7 +96,8 @@ private void AnimateErrorShake(SpoonDragHandler spoon)
     
         seq.AppendCallback(() => {
             spoon.PlayPourAnimation(); 
-            SoundManager.PlaySFX(SoundType.OnPouring); // Play OnPouring
+            //SoundManager.PlaySFX(SFXType.OnPouring); // Play OnPouring
+            SoundManager.instance.PlaySFX("OnPouring"); // Play OnPouring
         });
 
         seq.AppendInterval(1.0f);
@@ -101,7 +105,8 @@ private void AnimateErrorShake(SpoonDragHandler spoon)
         // Step 4: Return Home
         seq.Append(spoonRect.DOMove(spoon.startPosition, 0.5f).SetEase(Ease.InOutQuad)
             .OnStart(() => {
-                SoundManager.PlaySFX(SoundType.OnReturning); // Play OnReturning
+                //SoundManager.PlaySFX(SFXType.OnReturning); // Play OnReturning
+                SoundManager.instance.PlaySFX("OnReturning"); // Play OnReturning
             }));
 
         seq.OnComplete(() => 

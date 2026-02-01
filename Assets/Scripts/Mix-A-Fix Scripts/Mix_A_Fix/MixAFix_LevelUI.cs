@@ -20,7 +20,7 @@ public class MixAFix_LevelUI : MonoBehaviour
     [Header("Feedback Popups")]
     public TextMeshProUGUI feedbackText; 
     
-    string[] goodMsgs = { "Tasty!", "Yum!", "Perfect Mix!", "Good Job!" };
+    string[] goodMsgs = { "Perfect Mix!", "Good Job!" };
     string[] badMsgs = { "Not that!", "Wrong ingredient!", "Oops!", "Try again!" };
 
     [Header("Instruction Panel")]
