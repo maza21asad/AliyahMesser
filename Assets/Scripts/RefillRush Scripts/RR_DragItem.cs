@@ -29,6 +29,8 @@ public class RR_DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         canvasGroup.blocksRaycasts = false;
         transform.SetAsLastSibling();
 
+        SoundManager.instance.PlaySFX("OnDragBegin");
+
         transform.DOScale(originalScale * 1.12f, 0.18f)
                  .SetEase(Ease.OutBack);
     }
@@ -59,6 +61,8 @@ public class RR_DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
         if (!placed)
         {
+            SoundManager.instance.PlaySFX("OnDragEnd");
+
             // Smooth return
             rectTransform.DOMove(startPos, 0.25f)
                          .SetEase(Ease.OutQuad);

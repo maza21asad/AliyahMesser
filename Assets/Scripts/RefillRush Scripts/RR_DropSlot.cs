@@ -20,11 +20,13 @@ public class RR_DropSlot : MonoBehaviour, IDropHandler
 
             isFilled = true;
 
+            SoundManager.instance.PlaySFX("YesSound");
             RR_LevelUI.Instance.ShowFeedback(true);
             RR_LevelManager.Instance.RegisterCorrectPlacement();
         }
         else
         {
+            SoundManager.instance.PlaySFX("NoSound");
             RR_LevelUI.Instance.ShowFeedback(false);
             RR_LevelManager.Instance.RegisterWrongPlacement();
         }

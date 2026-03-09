@@ -58,6 +58,8 @@ public class RR_LevelManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         RR_LevelUI.Instance.ShowLevelComplete(currentLevel + 1);
+
+        SoundManager.instance.PlaySFX("YesSound");
     }
 
     public void RegisterWrongPlacement()

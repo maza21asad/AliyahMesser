@@ -128,6 +128,8 @@ public class RR_LevelUI : MonoBehaviour
 
     public void ShowAllLevelsComplete()
     {
+        SoundManager.instance.PlaySFX("YesSound");
+
         allLevelsCompletePanel.SetActive(true);
 
         Transform panel = allLevelsCompletePanel.transform;

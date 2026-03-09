@@ -135,6 +135,8 @@ public class PillFill_LevelUI : MonoBehaviour
     {
         allLevelsCompletePanel.SetActive(true);
 
+        SoundManager.instance.PlaySFX("YesSound");
+
         Transform panel = allLevelsCompletePanel.transform;
         panel.localScale = Vector3.zero;
 

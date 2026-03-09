@@ -128,6 +128,8 @@ public class PillFill_LevelManager : MonoBehaviour
             yield return new WaitForSeconds(reviveLength);
         }
 
+        SoundManager.instance.PlaySFX("YesSound");
+
         // Step 2: Show level complete popup (UI handles the animation)
         PillFill_LevelUI.Instance.ShowLevelComplete(currentLevelIndex + 1);
 
