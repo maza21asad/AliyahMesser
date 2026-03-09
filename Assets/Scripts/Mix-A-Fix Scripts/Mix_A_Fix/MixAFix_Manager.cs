@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class MixAFix_Manager : MonoBehaviour
 {
@@ -187,5 +188,11 @@ public class MixAFix_Manager : MonoBehaviour
     public void LoadNextLevel()
     {
         LoadLevel(currentLevelIndex + 1);
+    }
+
+    public void ReplayGame()
+    {
+        SoundManager.instance.PlaySFX("OnDragBegin");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

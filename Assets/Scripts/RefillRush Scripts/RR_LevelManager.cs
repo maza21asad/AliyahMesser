@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RR_LevelManager : MonoBehaviour
 {
@@ -110,6 +111,12 @@ public class RR_LevelManager : MonoBehaviour
         }
 
         LoadLevel(nextLevel);
+    }
+
+    public void ReplayGame()
+    {
+        SoundManager.instance.PlaySFX("OnDragBegin");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }

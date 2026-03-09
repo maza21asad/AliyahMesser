@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PillFill_LevelManager : MonoBehaviour
 {
@@ -153,5 +154,11 @@ public class PillFill_LevelManager : MonoBehaviour
         }
 
         LoadLevel(nextIndex);
+    }
+
+    public void ReplayGame()
+    {
+        SoundManager.instance.PlaySFX("OnDragBegin");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -87,8 +87,8 @@ public class SoundManager : MonoBehaviour
         AudioClip clip = GetClip(musicClips, clipName);
         if (clip == null) return;
 
-        if (musicSource.clip == clip && musicSource.isPlaying)
-            return;
+        //if (musicSource.clip == clip && musicSource.isPlaying)
+        //    return;
 
         musicSource.clip = clip;
         musicSource.loop = true;
