@@ -1700,6 +1700,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404e943ac5244952873f5ea78124db74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MixAFix_DollController
+  idleAnimation: Ele_Idle
+  successAnimation: Ele_Yes
+  sadAnimation: Ele_No
+  happyDanceAnimation: Ele_Yes
 --- !u!95 &374769345
 Animator:
   serializedVersion: 7
